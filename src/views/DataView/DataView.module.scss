@@ -1,5 +1,5 @@
 .DataView {
-    @apply px-16 py-8 text-white text-2xl;
+    @apply px-16 py-8 text-white text-2xl border border-white rounded-2xl bg-black/40 w-5/6;
     h3 {
         @apply font-bold mb-12;
     }

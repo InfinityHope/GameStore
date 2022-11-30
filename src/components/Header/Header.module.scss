@@ -17,7 +17,7 @@ header {
         @apply flex justify-between items-center text-white text-lg px-8 py-6;
         .buttons {
             @apply flex justify-end items-center w-1/4;
-            button {
+            a {
                 @apply mr-12;
                 &:last-child {
                     @apply mr-0 w-max;

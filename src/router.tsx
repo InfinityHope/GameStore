@@ -1,5 +1,6 @@
 import { createBrowserRouter } from 'react-router-dom'
 import {
+    CartPage,
     CatalogPage,
     HomePage,
     NewsPage,
@@ -26,6 +27,10 @@ export const router = () => {
         {
             path: '/news',
             element: <NewsPage />,
+        },
+        {
+            path: '/cart',
+            element: <CartPage />,
         },
         {
             path: '/profile',

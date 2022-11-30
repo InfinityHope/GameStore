@@ -2,12 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
-        'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
-        'Helvetica Neue', sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+html {
+    scrollbar-width: thin;
+    scrollbar-color: #e58e27 #16191e;
     &::-webkit-scrollbar {
         width: 5px;
         background-color: #16191e;
@@ -16,6 +13,14 @@ body {
         background-color: #e58e27;
         border-radius: 9em;
     }
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
+        'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
+        'Helvetica Neue', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 @layer utilities {

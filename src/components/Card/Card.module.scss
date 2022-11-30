@@ -1,6 +1,6 @@
 .card {
     @apply w-[270px] rounded-2xl transition duration-300 ease-out border
-  text-white font-semibold relative z-50;
+  text-white font-semibold relative;
     &:hover {
         @apply border-[#e58e27];
         &:before {

@@ -22,7 +22,7 @@ const Header: FC = () => {
                 <Navbar />
                 <SearchInput />
                 <div className={styles.buttons}>
-                    <button>
+                    <NavLink to={'/favorite'}>
                         <svg
                             width="25"
                             height="25"
@@ -35,8 +35,8 @@ const Header: FC = () => {
                                 fill="#FFFFFF"
                             />
                         </svg>
-                    </button>
-                    <button>
+                    </NavLink>
+                    <NavLink to={'/cart'}>
                         <svg
                             width="25"
                             height="25"
@@ -66,7 +66,7 @@ const Header: FC = () => {
                                 strokeLinejoin="round"
                             />
                         </svg>
-                    </button>
+                    </NavLink>
                     {authData.token ? (
                         <button>
                             <NavLink

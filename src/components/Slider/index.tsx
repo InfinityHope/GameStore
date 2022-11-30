@@ -1,5 +1,5 @@
 //Библиотеки
-import { useLayoutEffect, useRef, useState } from 'react'
+import { FC, ReactNode, useLayoutEffect, useRef, useState } from 'react'
 //Стили
 import styles from './Slider.module.scss'
 //Компоненты
@@ -13,7 +13,11 @@ interface IProps {
     slidesToShow?: number
 }
 
-const Slider = ({ children, type = 'Single', slidesToShow = 1 }: IProps) => {
+const Slider: FC<IProps> & { Page: FC<{ children: ReactNode }> } = ({
+    children,
+    type = 'Single',
+    slidesToShow = 1,
+}) => {
     const [offset, setOffset] = useState(0)
     const windowRef = useRef<HTMLDivElement>(null)
     const [width, setWidth] = useState(0)
@@ -21,7 +25,6 @@ const Slider = ({ children, type = 'Single', slidesToShow = 1 }: IProps) => {
     useLayoutEffect(() => {
         if (windowRef.current) {
             setWidth(windowRef.current.clientWidth)
-            console.log(width)
         }
     }, [width])
 
@@ -51,6 +54,7 @@ const Slider = ({ children, type = 'Single', slidesToShow = 1 }: IProps) => {
                         {children}
                     </div>
                 </div>
+
                 <div
                     className={`${styles.buttons} ${
                         type === 'Single' ? styles.Single : styles.Multiple
@@ -59,7 +63,16 @@ const Slider = ({ children, type = 'Single', slidesToShow = 1 }: IProps) => {
                     <button onClick={handleOnPrevClick}>
                         <GrFormPrevious size={30} />
                     </button>
-                    <button onClick={handleOnNextClick}>
+                    <button
+                        onClick={handleOnNextClick}
+                        disabled={
+                            offset ===
+                                -(
+                                    (width / slidesToShow) * children.length -
+                                    width
+                                ) && type === 'Multiple'
+                        }
+                    >
                         <GrFormNext size={30} />
                     </button>
                 </div>

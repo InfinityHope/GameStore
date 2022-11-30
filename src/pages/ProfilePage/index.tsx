@@ -28,17 +28,17 @@ const ProfilePage = () => {
     const dispatch = useAppDispatch()
 
     useEffect(() => {
-        dispatch(fetchUserData({ _id, token }))
-        dispatch(getUserLibrary({ _id, token }))
         dispatch(getUserOrders({ _id, token }))
+        dispatch(getUserLibrary({ _id, token }))
+        dispatch(fetchUserData({ _id, token }))
     }, [])
 
     return (
-        <>
+        <LayoutMain>
             {isLoading ? (
                 <Spinner />
             ) : (
-                <LayoutMain>
+                <>
                     {location.pathname === '/profile' ? (
                         <LayoutProfile
                             _id={_id}
@@ -59,9 +59,9 @@ const ProfilePage = () => {
                     ) : (
                         <Outlet context={_id} />
                     )}
-                </LayoutMain>
+                </>
             )}
-        </>
+        </LayoutMain>
     )
 }
 

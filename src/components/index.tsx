@@ -11,6 +11,7 @@ import SideMenu from './SideMenu'
 import Slider from './Slider'
 import Spinner from './Spinner'
 import Tabs from './Tabs'
+import Order from './Order'
 
 export {
     AuthForm,
@@ -26,4 +27,5 @@ export {
     Slider,
     Tabs,
     Spinner,
+    Order,
 }

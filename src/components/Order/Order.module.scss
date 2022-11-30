@@ -1,0 +1,27 @@
+.Order {
+    @apply flex w-full border-t-2 p-3 justify-between text-xl text-white items-center;
+    &:last-child {
+        @apply border-b-2;
+    }
+    &Img {
+        @apply w-32 h-32;
+        > img {
+            @apply w-24 h-32 rounded-2xl object-cover;
+        }
+    }
+    ul {
+        li {
+            @apply mb-4 flex items-center;
+            &:last-child {
+                @apply border w-fit p-2 rounded-xl border-[#e58e27];
+            }
+        }
+    }
+    span {
+        @apply text-2xl;
+    }
+}
+
+.Copy {
+    @apply text-orange-400;
+}

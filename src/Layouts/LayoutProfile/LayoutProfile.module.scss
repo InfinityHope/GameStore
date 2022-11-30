@@ -2,8 +2,5 @@
     @apply flex flex-col;
     .LayoutContainer {
         @apply flex justify-between w-3/4 my-0 mx-auto;
-        .LayoutView {
-            @apply border border-white w-full rounded-2xl bg-black/40 w-5/6;
-        }
     }
 }
