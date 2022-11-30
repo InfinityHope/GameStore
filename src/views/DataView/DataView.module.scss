@@ -1,0 +1,12 @@
+.DataView {
+    @apply px-16 py-8 text-white text-2xl;
+    h3 {
+        @apply font-bold mb-12;
+    }
+    form {
+        @apply text-lg;
+        button {
+            @apply w-1/4;
+        }
+    }
+}

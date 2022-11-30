@@ -1,0 +1,18 @@
+.Button {
+    @apply bg-[#e58e27] font-bold text-black rounded-2xl w-3/4 h-10 transition-all ease-in-out duration-300  uppercase;
+    &:hover {
+        @apply bg-white;
+    }
+    &Card {
+        @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-0 invisible z-20;
+    }
+    &Header {
+        @apply border border-2 border-white bg-transparent px-2 py-[2px] text-white;
+        &:hover {
+            @apply text-black;
+        }
+    }
+    &:disabled {
+        @apply bg-gray-500 text-white;
+    }
+}

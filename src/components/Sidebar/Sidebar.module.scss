@@ -1,0 +1,9 @@
+.Sidebar {
+    @apply fixed h-full w-full z-10 transition-all duration-300;
+    > div {
+        @apply w-[365px] h-full bg-black/90 absolute right-0;
+        form {
+            @apply mx-6;
+        }
+    }
+}

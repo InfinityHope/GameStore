@@ -1,0 +1,12 @@
+.ProfileView {
+    @apply p-16 text-white text-2xl;
+    h3 {
+        @apply font-bold text-center mb-12;
+    }
+    ul {
+        @apply flex justify-between mt-12;
+        > li {
+            @apply flex flex-col text-center;
+        }
+    }
+}

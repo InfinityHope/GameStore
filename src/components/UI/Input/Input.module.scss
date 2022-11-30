@@ -1,0 +1,16 @@
+.WrapperInput {
+    @apply relative mb-[36px] w-full;
+    .Input {
+        @apply relative  w-full;
+        input {
+            @apply w-full text-base font-bold leading-8 text-white py-0 border border-0 border-b outline-0 bg-transparent;
+            &:focus ~ label,
+            &:not(:placeholder-shown) ~ label {
+                @apply bottom-[35px] text-[10px];
+            }
+        }
+        label {
+            @apply text-sm leading-8 tracking-wider uppercase text-white absolute left-0 bottom-1 mb-0 transition-all duration-300 pointer-events-none;
+        }
+    }
+}

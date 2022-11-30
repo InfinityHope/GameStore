@@ -1,0 +1,12 @@
+.SideMenu {
+    @apply w-1/6 flex flex-col text-white text-2xl;
+    > li {
+        @apply mb-8;
+        a {
+            @apply px-[14px];
+        }
+        .Active {
+            @apply border border-2 border-[#e58e38] rounded-2xl py-[2px];
+        }
+    }
+}

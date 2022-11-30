@@ -1,0 +1,35 @@
+.Single {
+    @apply h-full;
+    img {
+        @apply w-full object-cover relative max-h-[800px] brightness-[70%];
+    }
+    > div {
+        @apply relative;
+        &:after {
+            @apply content-[''] w-full h-full left-0 bottom-0 absolute;
+            background: linear-gradient(
+                180deg,
+                transparent 0%,
+                rgba(20, 17, 17, 0.05) 21.23%,
+                rgba(20, 17, 17, 0.676) 80.32%,
+                #16191e 100%
+            );
+        }
+    }
+    > article {
+        @apply block w-1/6 pl-36 text-6xl absolute bottom-1/4  h-1/6 text-white flex flex-col opacity-0 translate-x-full transition ease-in-out duration-500;
+        a {
+            @apply w-max;
+        }
+        > div {
+            @apply flex text-3xl items-center mt-12;
+
+            span {
+                @apply font-bold ml-12;
+            }
+            button {
+                @apply text-lg w-1/4;
+            }
+        }
+    }
+}

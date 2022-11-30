@@ -1,0 +1,44 @@
+.card {
+    @apply w-[270px] rounded-2xl transition duration-300 ease-out border
+  text-white font-semibold relative z-50;
+    &:hover {
+        @apply border-[#e58e27];
+        &:before {
+            @apply content-[''] bg-black/40 rounded-xl opacity-100 w-full h-full absolute left-0 top-0 z-20 pointer-events-none;
+        }
+        button {
+            @apply opacity-100 visible;
+        }
+    }
+    h3 {
+        @apply py-4 px-2;
+    }
+    > span {
+        @apply text-[#515153] py-4 px-2;
+    }
+    > a {
+        > div {
+            @apply relative;
+            &:after {
+                @apply content-[''] w-full h-full left-0 bottom-0 absolute;
+                background: linear-gradient(
+                    180deg,
+                    transparent 0%,
+                    rgba(20, 17, 17, 0.05) 21.23%,
+                    rgba(20, 17, 17, 0.676) 80.32%,
+                    #16191e 100%
+                );
+            }
+        }
+    }
+    img {
+        @apply rounded-t-2xl h-80 w-full object-cover;
+    }
+
+    &-bottom {
+        @apply py-4 px-2 flex justify-between items-center;
+        span {
+            @apply uppercase text-[#e58e27] text-2xl mr-6;
+        }
+    }
+}
