@@ -3,7 +3,7 @@ import { FC, useContext, useEffect, useRef } from 'react'
 //Стили
 import styles from './Sidebar.module.scss'
 //Контекст
-import { SidebarContext } from '../../context/SidebarContext'
+import { SidebarContext } from '../../context/SidebarContext/SidebarContext'
 //Компоненты
 import { AuthForm, Tabs } from '../'
 

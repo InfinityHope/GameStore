@@ -1,31 +1,39 @@
 //Библиотеки
 import { useEffect } from 'react'
-//Типы
-import { IProduct } from '../../redux/models/IProduct'
+//Стили
+import styles from './HomePage.module.scss'
 //Хуки
 import { useAppDispatch, useAppSelector } from '../../redux/hooks/redux'
 //Асинхронные функции
 import { fetchProducts } from '../../redux/reducers/ProductsReducer/asyncActions'
 //Компоненты
 import { Link } from 'react-router-dom'
-import { Cards, Slider, Spinner } from '../../components'
+import { Card, Slider, Spinner } from '../../components'
 import { Button } from '../../components/UI'
 import LayoutMain from '../../Layouts/LayoutMain'
+import { ICartItem } from '../../redux/models/cart.models'
+import { addCartItem } from '../../redux/reducers/CartReducer'
 
 const HomePage = () => {
-    const { isLoading, products } = useAppSelector((state) => state.products)
+    const { isLoadingProducts, products } = useAppSelector((state) => state.products)
+    const { cartItems } = useAppSelector((state) => state.cart)
     const dispatch = useAppDispatch()
 
+    const addCartItemHandler = ({ productId, title, img, price }: ICartItem) => {
+        dispatch(addCartItem({ productId, price, img, title }))
+    }
+
     useEffect(() => {
-        dispatch(fetchProducts())
-    }, [])
+        dispatch(fetchProducts({ limit: 8 }))
+    }, [dispatch])
 
     const renderSlides = () => {
         return products
-            .filter((product: IProduct) => product.toSlider)
-            .map((product: IProduct) => {
+            .filter((product) => product.toSlider)
+            .map((product) => {
+                const { _id, img, title, price } = product
                 return (
-                    <Slider.Page>
+                    <Slider.Page key={product._id}>
                         <div>
                             <img
                                 src={`${process.env.PUBLIC_URL}/slides/${product.sliderImg}`}
@@ -33,11 +41,24 @@ const HomePage = () => {
                             />
                         </div>
                         <article>
-                            <Link to={`/catalog/${product._id}`}>
-                                {product.title}
-                            </Link>
+                            <Link to={`/catalog/${product._id}`}>{product.title}</Link>
                             <div>
-                                <Button>В корзину</Button>
+                                <Button
+                                    onClick={() =>
+                                        addCartItemHandler({
+                                            productId: _id,
+                                            title,
+                                            img,
+                                            price,
+                                        })
+                                    }
+                                >
+                                    {cartItems.find(
+                                        (cartItem) => cartItem.productId === product._id
+                                    )
+                                        ? 'Добавлено'
+                                        : 'В корзину'}
+                                </Button>
                                 <span>{product.price} ₽</span>
                             </div>
                         </article>
@@ -47,13 +68,19 @@ const HomePage = () => {
     }
     return (
         <LayoutMain>
-            {isLoading ? (
+            {isLoadingProducts ? (
                 <Spinner />
             ) : (
                 <>
-                    <Slider type={'Single'}>{renderSlides()}</Slider>
+                    <Slider autoPlay type={'Single'}>
+                        {renderSlides()}
+                    </Slider>
                     <div className="container pt-24">
-                        <Cards products={products} />
+                        <div className={styles.Cards}>
+                            {products.map((product) => (
+                                <Card type={'Product'} {...product} key={product._id} />
+                            ))}
+                        </div>
                     </div>
                 </>
             )}

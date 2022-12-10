@@ -1,7 +1,7 @@
 //Библиотеки
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 //Типы
-import { IProduct, ProductsData } from '../../models/IProduct'
+import { IProduct, IProductsData } from '../../models/product.models'
 //Асинхронные функции
 import { fetchProduct, fetchProducts } from './asyncActions'
 
@@ -10,7 +10,7 @@ interface ProductState {
     product: IProduct
     pages: number
     page: number
-    isLoading: boolean
+    isLoadingProducts: boolean
     error: string
 }
 
@@ -19,7 +19,7 @@ const initialState: ProductState = {
     product: {} as IProduct,
     pages: 0,
     page: 0,
-    isLoading: false,
+    isLoadingProducts: false,
     error: '',
 }
 
@@ -28,42 +28,45 @@ export const Product = createSlice({
     initialState,
     reducers: {},
     extraReducers: {
+        [fetchProducts.pending.type]: (state) => {
+            state.isLoadingProducts = true
+        },
         [fetchProducts.fulfilled.type]: (
             state,
-            action: PayloadAction<ProductsData>
+            action: PayloadAction<IProductsData>
         ) => {
-            state.isLoading = false
-            state.error = ''
-            state.products = action.payload.products
+            state.isLoadingProducts = false
+            state.products = action.payload.products.map((product) => {
+                return {
+                    ...product,
+                    isAdded: false,
+                }
+            })
             state.pages = action.payload.pages
             state.page = action.payload.page
-        },
-        [fetchProducts.pending.type]: (state) => {
-            state.isLoading = true
         },
         [fetchProducts.rejected.type]: (
             state,
             action: PayloadAction<string>
         ) => {
-            state.isLoading = false
+            state.isLoadingProducts = false
             state.error = action.payload
+        },
+        [fetchProduct.pending.type]: (state) => {
+            state.isLoadingProducts = true
         },
         [fetchProduct.fulfilled.type]: (
             state,
             action: PayloadAction<IProduct>
         ) => {
-            state.isLoading = false
-            state.error = ''
+            state.isLoadingProducts = false
             state.product = action.payload
-        },
-        [fetchProduct.pending.type]: (state) => {
-            state.isLoading = true
         },
         [fetchProduct.rejected.type]: (
             state,
             action: PayloadAction<string>
         ) => {
-            state.isLoading = false
+            state.isLoadingProducts = false
             state.error = action.payload
         },
     },

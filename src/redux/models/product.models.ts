@@ -1,4 +1,4 @@
-export interface ProductsData {
+export interface IProductsData {
     limit: number
     page: number
     products: IProduct[]

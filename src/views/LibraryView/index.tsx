@@ -5,7 +5,7 @@ import { useAppSelector } from '../../redux/hooks/redux'
 import { useOutletContext } from 'react-router'
 //Компоненты
 import LayoutProfile from '../../Layouts/LayoutProfile'
-import { Card, Cards, Slider } from '../../components'
+import { Card, Slider } from '../../components'
 
 const LibraryView = () => {
     const { userLibrary } = useAppSelector((state) => state.user)
@@ -13,7 +13,11 @@ const LibraryView = () => {
     const _id: string = useOutletContext()
 
     return (
-        <LayoutProfile label={'Библиотека'} link={'/profile/library'} _id={_id}>
+        <LayoutProfile
+            label={'Библиотека'}
+            link={'/profile/library'}
+            _id={_id}
+        >
             <div className={styles.LibraryView}>
                 {userLibrary.length === 0 ? (
                     <h3>Ваша библиотека пуста :c</h3>
@@ -24,13 +28,23 @@ const LibraryView = () => {
                                 <Card
                                     type={'LibraryGame'}
                                     {...product}
-                                    key={product._id}
+                                    _id={product.productId}
+                                    key={product.productId}
                                 />
                             </Slider.Page>
                         ))}
                     </Slider>
                 ) : (
-                    <Cards cardsType={'LibraryGame'} products={userLibrary} />
+                    <>
+                        {userLibrary.map((product) => (
+                            <Card
+                                type={'LibraryGame'}
+                                {...product}
+                                _id={product.productId}
+                                key={product.productId}
+                            />
+                        ))}
+                    </>
                 )}
             </div>
         </LayoutProfile>

@@ -8,6 +8,5 @@ export interface IUser {
 }
 export interface IUpdateUser {
     _id: string
-    token: string
     data: IProfileValues
 }

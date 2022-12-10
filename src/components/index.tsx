@@ -1,6 +1,5 @@
 import AuthForm from './AuthForm'
 import Breadcrumbs from './Breadcrumbs'
-import Cards from './Cards'
 import Card from './Card'
 import Footer from './Footer'
 import Header from './Header'
@@ -12,6 +11,7 @@ import Slider from './Slider'
 import Spinner from './Spinner'
 import Tabs from './Tabs'
 import Order from './Order'
+import CartItem from './CartItem'
 
 export {
     AuthForm,
@@ -22,10 +22,10 @@ export {
     Header,
     Footer,
     Card,
-    Cards,
     Breadcrumbs,
     Slider,
     Tabs,
     Spinner,
     Order,
+    CartItem,
 }

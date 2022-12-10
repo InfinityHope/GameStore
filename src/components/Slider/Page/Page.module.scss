@@ -33,3 +33,10 @@
         }
     }
 }
+
+.Multiple {
+    @apply h-full;
+    img {
+        @apply w-full object-cover relative max-h-[800px] brightness-[70%];
+    }
+}

@@ -3,7 +3,7 @@ import { FC, ReactNode, useState } from 'react'
 //Стили
 import styles from './Layout.module.scss'
 //Контекст
-import { SidebarContext } from '../../context/SidebarContext'
+import { SidebarContext } from '../../context/SidebarContext/SidebarContext'
 //Компоненты
 import { Footer, Header, Sidebar } from '../../components'
 

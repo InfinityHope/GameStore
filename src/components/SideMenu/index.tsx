@@ -4,13 +4,12 @@ import { FC, useState } from 'react'
 import styles from './SideMenu.module.scss'
 //Хуки
 import { useAppDispatch } from '../../redux/hooks/redux'
-//Асинхронные функции
-import { logout } from '../../redux/reducers/AuthReducer'
 //Компоненты
 import { NavLink } from 'react-router-dom'
+import { logout } from '../../redux/reducers/AuthReducer'
 
 const SideMenu: FC<{ _id: string }> = ({ _id }) => {
-    const [links, setLinks] = useState([
+    const [links] = useState([
         {
             link: `/profile`,
             label: 'Профиль',
@@ -34,6 +33,10 @@ const SideMenu: FC<{ _id: string }> = ({ _id }) => {
     ])
     const dispatch = useAppDispatch()
 
+    const logoutHandler = () => {
+        dispatch(logout())
+    }
+
     return (
         <ul className={styles.SideMenu}>
             {links.map(({ link, label, _id }, index) => {
@@ -53,7 +56,11 @@ const SideMenu: FC<{ _id: string }> = ({ _id }) => {
                 )
             })}
             <li>
-                <NavLink to={'/'} end={true} onClick={() => dispatch(logout())}>
+                <NavLink
+                    to={'/'}
+                    end={true}
+                    onClick={() => logoutHandler()}
+                >
                     Выйти
                 </NavLink>
             </li>

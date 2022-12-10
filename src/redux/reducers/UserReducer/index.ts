@@ -1,19 +1,19 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import {
-    fetchUserData,
+    getUserData,
     getUserLibrary,
     getUserOrders,
     updateUserData,
 } from './asyncActions'
-import { IUser } from '../../models/IUser'
-import { ILibraryGame } from '../../models/ILibraryGame'
-import { IOrder } from '../../models/IOrder'
+import { IUser } from '../../models/user.models'
+import { ILibraryItem } from '../../models/library.models'
+import { IOrder } from '../../models/order.models'
 
 interface IUserState {
     userData: IUser
-    userLibrary: ILibraryGame[]
+    userLibrary: ILibraryItem[]
     userOrders: IOrder[]
-    isLoading: boolean
+    isLoadingUser: boolean
     error: string
 }
 
@@ -21,7 +21,7 @@ const initialState: IUserState = {
     userData: {} as IUser,
     userLibrary: [],
     userOrders: [],
-    isLoading: false,
+    isLoadingUser: false,
     error: '',
 }
 
@@ -30,75 +30,75 @@ const User = createSlice({
     initialState,
     reducers: {},
     extraReducers: {
-        [fetchUserData.pending.type]: (state) => {
-            state.isLoading = true
+        [getUserData.pending.type]: (state) => {
+            state.isLoadingUser = true
         },
-        [fetchUserData.rejected.type]: (
-            state,
-            action: PayloadAction<string>
-        ) => {
-            state.isLoading = false
-            state.error = action.payload
-        },
-        [fetchUserData.fulfilled.type]: (
+        [getUserData.fulfilled.type]: (
             state,
             action: PayloadAction<IUser>
         ) => {
+            state.isLoadingUser = false
             state.userData = action.payload
-            state.isLoading = false
         },
-        [updateUserData.pending.type]: (state) => {
-            state.isLoading = true
-        },
-        [updateUserData.rejected.type]: (
+        [getUserData.rejected.type]: (
             state,
             action: PayloadAction<string>
         ) => {
-            state.isLoading = false
+            state.isLoadingUser = false
             state.error = action.payload
+        },
+        [updateUserData.pending.type]: (state) => {
+            state.isLoadingUser = true
         },
         [updateUserData.fulfilled.type]: (
             state,
             action: PayloadAction<IUser>
         ) => {
+            state.isLoadingUser = false
             state.userData.email = action.payload.email
             state.userData.nickName = action.payload.nickName
             state.userData.firstName = action.payload.firstName
-            state.isLoading = false
+        },
+        [updateUserData.rejected.type]: (
+            state,
+            action: PayloadAction<string>
+        ) => {
+            state.isLoadingUser = false
+            state.error = action.payload
         },
         [getUserLibrary.pending.type]: (state) => {
-            state.isLoading = true
+            state.isLoadingUser = true
+        },
+        [getUserLibrary.fulfilled.type]: (
+            state,
+            action: PayloadAction<ILibraryItem[]>
+        ) => {
+            state.isLoadingUser = false
+            state.userLibrary = action.payload
         },
         [getUserLibrary.rejected.type]: (
             state,
             action: PayloadAction<string>
         ) => {
-            state.isLoading = false
+            state.isLoadingUser = false
             state.error = action.payload
-        },
-        [getUserLibrary.fulfilled.type]: (
-            state,
-            action: PayloadAction<ILibraryGame[]>
-        ) => {
-            state.isLoading = false
-            state.userLibrary = action.payload
         },
         [getUserOrders.pending.type]: (state) => {
-            state.isLoading = true
-        },
-        [getUserOrders.rejected.type]: (
-            state,
-            action: PayloadAction<string>
-        ) => {
-            state.isLoading = false
-            state.error = action.payload
+            state.isLoadingUser = true
         },
         [getUserOrders.fulfilled.type]: (
             state,
             action: PayloadAction<IOrder[]>
         ) => {
-            state.isLoading = false
+            state.isLoadingUser = false
             state.userOrders = action.payload
+        },
+        [getUserOrders.rejected.type]: (
+            state,
+            action: PayloadAction<string>
+        ) => {
+            state.isLoadingUser = false
+            state.error = action.payload
         },
     },
 })

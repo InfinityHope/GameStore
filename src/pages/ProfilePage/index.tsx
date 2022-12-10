@@ -4,10 +4,13 @@ import { Outlet, useLocation } from 'react-router'
 //Стили
 import styles from './ProfilePage.module.scss'
 //Хуки
-import { useAppDispatch, useAppSelector } from '../../redux/hooks/redux'
+import {
+    useAppDispatch,
+    useAppSelector,
+} from '../../redux/hooks/redux'
 //Асинхронные функции
 import {
-    fetchUserData,
+    getUserData,
     getUserLibrary,
     getUserOrders,
 } from '../../redux/reducers/UserReducer/asyncActions'
@@ -17,25 +20,26 @@ import { Spinner } from '../../components'
 import LayoutMain from '../../Layouts/LayoutMain'
 
 const ProfilePage = () => {
-    const { userData, isLoading } = useAppSelector((state) => state.user)
-    const {
-        token,
-        user: { _id },
-    } = useAppSelector((state) => state.auth.authData)
+    const { userData, isLoadingUser } = useAppSelector(
+        (state) => state.user
+    )
+    const { _id } = useAppSelector(
+        (state) => state.auth.authData.user
+    )
 
     const location = useLocation()
 
     const dispatch = useAppDispatch()
 
     useEffect(() => {
-        dispatch(getUserOrders({ _id, token }))
-        dispatch(getUserLibrary({ _id, token }))
-        dispatch(fetchUserData({ _id, token }))
-    }, [])
+        dispatch(getUserOrders(_id))
+        dispatch(getUserLibrary(_id))
+        dispatch(getUserData(_id))
+    }, [dispatch, _id])
 
     return (
         <LayoutMain>
-            {isLoading ? (
+            {isLoadingUser ? (
                 <Spinner />
             ) : (
                 <>

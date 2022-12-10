@@ -13,7 +13,7 @@ import {
     registerUser,
 } from '../../redux/reducers/AuthReducer/asyncActions'
 //Контекст
-import { SidebarContext } from '../../context/SidebarContext'
+import { SidebarContext } from '../../context/SidebarContext/SidebarContext'
 //Компоненты
 import { Button, Input } from '../UI'
 
@@ -30,7 +30,7 @@ const AuthForm: FC<{ type: 'Login' | 'Register' }> = ({ type }) => {
         mode: 'onBlur',
         defaultValues: {
             email: 'bigbasspoll@gmail.com',
-            password: 'Xen050501nik',
+            password: 'Xen050501',
         },
     })
 

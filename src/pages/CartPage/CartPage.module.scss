@@ -1,0 +1,37 @@
+.CartPage {
+    @apply mt-24;
+
+    .CartEmpty {
+        @apply w-1/2 mx-auto my-0 text-center;
+        h3 {
+            @apply font-bold text-3xl text-white mt-12;
+        }
+        button {
+            @apply w-1/2 mt-12;
+        }
+    }
+    .CartContainer {
+        @apply flex mt-12 justify-between;
+        .CartItems {
+            h2 {
+                @apply text-white text-5xl mb-12;
+            }
+            @apply w-3/5;
+        }
+        .CartTotal {
+            @apply p-6 mb-2 bg-black border border-white/50 rounded-xl sticky text-white text-3xl w-1/4 h-full;
+            > div {
+                @apply flex justify-between mb-10;
+                span:last-child {
+                    @apply text-[#e58e27] font-bold;
+                }
+            }
+            hr {
+                @apply bg-white;
+            }
+            button {
+                @apply mt-4 text-xl;
+            }
+        }
+    }
+}

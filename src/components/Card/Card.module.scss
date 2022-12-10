@@ -1,6 +1,6 @@
-.card {
+.Card {
     @apply w-[270px] rounded-2xl transition duration-300 ease-out border
-  text-white font-semibold relative;
+  text-white font-semibold relative mr-2;
     &:hover {
         @apply border-[#e58e27];
         &:before {
@@ -8,6 +8,9 @@
         }
         button {
             @apply opacity-100 visible;
+        }
+        .Favorite {
+            @apply opacity-100 visible z-20;
         }
     }
     h3 {
@@ -35,7 +38,19 @@
         @apply rounded-t-2xl h-80 w-full object-cover;
     }
 
-    &-bottom {
+    .Favourite {
+        @apply absolute top-2 right-2 opacity-0 invisible z-20;
+    }
+
+    .ActiveFav {
+        > svg {
+            > path {
+                fill: #e58e27;
+            }
+        }
+    }
+
+    &Bottom {
         @apply py-4 px-2 flex justify-between items-center;
         span {
             @apply uppercase text-[#e58e27] text-2xl mr-6;

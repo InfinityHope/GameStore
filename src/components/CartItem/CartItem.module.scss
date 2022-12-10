@@ -1,0 +1,32 @@
+.CartItem {
+    @apply flex w-full py-6 border-t-2;
+    &:last-child {
+        @apply border-b-2;
+    }
+    .CartItemImg {
+        @apply w-1/6;
+        img {
+            @apply rounded-2xl shadow-[0_5px_5px_5px_rgba(0,0,0,0.8)] object-cover;
+        }
+    }
+    .CartItemContent {
+        @apply flex flex-col  w-full text-white ml-10;
+        .CartItemTitle {
+            @apply flex justify-between text-3xl;
+            > div {
+                &:last-child {
+                    cursor: pointer;
+                }
+            }
+        }
+        .CartItemPrice {
+            @apply text-2xl mt-4;
+        }
+        .CartItemRegions {
+            @apply mt-8 border-t border-t-gray-600;
+            > span {
+                @apply text-[#e58e27];
+            }
+        }
+    }
+}

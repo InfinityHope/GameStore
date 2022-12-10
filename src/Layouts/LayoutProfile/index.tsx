@@ -24,7 +24,7 @@ const LayoutProfile: FC<IProps> = ({ label, link, _id, children }) => {
                     },
                 ]}
             />
-            <div className={styles.LayoutContainer}>
+            <div className={`${styles.LayoutContainer} container`}>
                 <SideMenu _id={_id} />
                 {children}
             </div>

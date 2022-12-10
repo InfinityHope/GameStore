@@ -3,7 +3,7 @@ import { FC } from 'react'
 //Стили
 import styles from './RequirementsView.module.scss'
 //Типы
-import { IProduct } from '../../redux/models/IProduct'
+import { IProduct } from '../../redux/models/product.models'
 
 const RequirementsView: FC<{ product: IProduct }> = ({ product }) => {
     return (

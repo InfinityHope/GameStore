@@ -5,7 +5,7 @@ import styles from './Header.module.scss'
 //Хуки
 import { useAppSelector } from '../../redux/hooks/redux'
 //Контекст
-import { SidebarContext } from '../../context/SidebarContext'
+import { SidebarContext } from '../../context/SidebarContext/SidebarContext'
 //Компоненты
 import { NavLink } from 'react-router-dom'
 import { Navbar, SearchInput } from '../'
@@ -22,7 +22,7 @@ const Header: FC = () => {
                 <Navbar />
                 <SearchInput />
                 <div className={styles.buttons}>
-                    <NavLink to={'/favorite'}>
+                    <NavLink to={'/favourite'}>
                         <svg
                             width="25"
                             height="25"

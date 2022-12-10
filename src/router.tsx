@@ -2,6 +2,7 @@ import { createBrowserRouter } from 'react-router-dom'
 import {
     CartPage,
     CatalogPage,
+    FavouritePage,
     HomePage,
     NewsPage,
     ProfilePage,
@@ -27,6 +28,10 @@ export const router = () => {
         {
             path: '/news',
             element: <NewsPage />,
+        },
+        {
+            path: '/favourite',
+            element: <FavouritePage />,
         },
         {
             path: '/cart',

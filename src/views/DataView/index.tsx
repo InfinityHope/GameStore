@@ -2,7 +2,10 @@ import { SubmitHandler, useForm } from 'react-hook-form'
 //Стили
 import styles from './DataView.module.scss'
 //Хуки
-import { useAppDispatch, useAppSelector } from '../../redux/hooks/redux'
+import {
+    useAppDispatch,
+    useAppSelector,
+} from '../../redux/hooks/redux'
 //Типы
 import { IProfileValues } from './Profile.types'
 //Асинхронные функции
@@ -14,7 +17,6 @@ import { useOutletContext } from 'react-router'
 
 const DataView = () => {
     const { userData } = useAppSelector((state) => state.user)
-    const { token } = useAppSelector((state) => state.auth.authData)
     const _id: string = useOutletContext()
     const dispatch = useAppDispatch()
 
@@ -34,12 +36,11 @@ const DataView = () => {
 
     const onSubmit: SubmitHandler<IProfileValues> = (data): void => {
         if (data.password !== '') {
-            dispatch(updateUserData({ _id, token, data }))
+            dispatch(updateUserData({ _id, data }))
         } else {
             dispatch(
                 updateUserData({
                     _id,
-                    token,
                     data: { ...data, password: null },
                 })
             )
@@ -47,7 +48,11 @@ const DataView = () => {
     }
 
     return (
-        <LayoutProfile label={'Личные данные'} link={'/profile/data'} _id={_id}>
+        <LayoutProfile
+            label={'Личные данные'}
+            link={'/profile/data'}
+            _id={_id}
+        >
             <div className={styles.DataView}>
                 <h3>Личные данные</h3>
                 <form onSubmit={handleSubmit(onSubmit)}>
@@ -95,7 +100,8 @@ const DataView = () => {
                         error={errors.password}
                         minLength={{
                             value: 6,
-                            message: 'Минимальная длина пароля 6 символов',
+                            message:
+                                'Минимальная длина пароля 6 символов',
                         }}
                     />
                     <Button>Сохранить</Button>

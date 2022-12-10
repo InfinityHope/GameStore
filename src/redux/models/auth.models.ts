@@ -1,4 +1,4 @@
-export interface IAuthData {
+export interface IAuth {
     token: string
     user: {
         _id: string

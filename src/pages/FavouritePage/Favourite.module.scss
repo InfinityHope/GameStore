@@ -1,0 +1,15 @@
+.FavouritePage {
+    @apply pt-24;
+    .FavouriteEmpty {
+        @apply w-1/2 mx-auto my-0 text-center;
+        h3 {
+            @apply font-bold text-3xl text-white mt-12;
+        }
+        button {
+            @apply w-1/2 mt-12;
+        }
+    }
+    .Cards {
+        @apply grid grid-columns-4 gap-y-10;
+    }
+}
