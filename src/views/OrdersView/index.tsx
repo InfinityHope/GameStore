@@ -1,7 +1,7 @@
 import React from 'react'
 import LayoutProfile from '../../Layouts/LayoutProfile'
 import { useOutletContext } from 'react-router'
-import { useAppSelector } from '../../redux/hooks/redux'
+import { useAppSelector } from '../../hooks/useAppSelector'
 import { Order } from '../../components'
 import { Button } from '../../components/UI'
 import styles from './Orders.module.scss'
@@ -10,6 +10,7 @@ import { NavLink } from 'react-router-dom'
 const OrdersView = () => {
     const _id: string = useOutletContext()
     const { userOrders } = useAppSelector((state) => state.user)
+
     return (
         <LayoutProfile label={'Заказы'} link={'/profile/orders'} _id={_id}>
             <div className={styles.OrdersView}>
@@ -21,9 +22,7 @@ const OrdersView = () => {
                         </Button>
                     </div>
                 ) : (
-                    userOrders.map((order) => (
-                        <Order key={order.licenseKey} {...order} />
-                    ))
+                    userOrders.map((order) => <Order key={order.licenseKey} {...order} />)
                 )}
             </div>
         </LayoutProfile>

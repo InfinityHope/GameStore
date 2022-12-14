@@ -5,6 +5,7 @@ import SinglePage from './SinglePage'
 import ProfilePage from './ProfilePage'
 import CartPage from './CartPage'
 import FavouritePage from './FavouritePage'
+import NotFoundPage from './NotFoundPage'
 
 export {
     NewsPage,
@@ -14,4 +15,5 @@ export {
     ProfilePage,
     CartPage,
     FavouritePage,
+    NotFoundPage,
 }

@@ -1,23 +1,26 @@
 import { FC } from 'react'
 import styles from './CartItem.module.scss'
 import { NavLink } from 'react-router-dom'
-import { ICartItem } from '../../redux/models/cart.models'
-import { deleteCartItem } from '../../redux/reducers/CartReducer'
-import { useAppDispatch } from '../../redux/hooks/redux'
+import { useActions } from '../../hooks/useActions'
 
 interface IProps {
     productId: string
     title: string
     price: number
     img: string
+    serviceActivation?: string
+    regionActivation?: string
 }
 
-const CartItem: FC<IProps> = ({ productId, title, price, img }) => {
-    const dispatch = useAppDispatch()
-
-    const deleteCartItemHandler = ({ productId, title, img, price }: ICartItem) => {
-        dispatch(deleteCartItem({ productId, title, price, img }))
-    }
+const CartItem: FC<IProps> = ({
+    productId,
+    title,
+    price,
+    img,
+    serviceActivation,
+    regionActivation,
+}) => {
+    const { deleteCartItem } = useActions()
 
     return (
         <div className={styles.CartItem}>
@@ -29,7 +32,7 @@ const CartItem: FC<IProps> = ({ productId, title, price, img }) => {
                     <div className={styles.CartItemText}>{title}</div>
                     <button
                         onClick={() =>
-                            deleteCartItemHandler({
+                            deleteCartItem({
                                 productId,
                                 title,
                                 img,
@@ -42,9 +45,16 @@ const CartItem: FC<IProps> = ({ productId, title, price, img }) => {
                     </button>
                 </div>
                 <div className={styles.CartItemPrice}>{price} ₽</div>
-                <div className={styles.CartItemRegions}>
-                    Регион активации: <span>Россия, Беларусь и СНГ</span>
-                </div>
+                <ul className={styles.CartItemActivation}>
+                    <li>
+                        <span>Регион активации:</span>
+                        <b>{regionActivation}</b>
+                    </li>
+                    <li>
+                        <span>Сервис активации:</span>
+                        <b>{serviceActivation}</b>
+                    </li>
+                </ul>
             </div>
         </div>
     )

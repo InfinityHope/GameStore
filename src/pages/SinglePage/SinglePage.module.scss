@@ -16,10 +16,10 @@
             li {
                 @apply flex p-2;
                 p {
-                    @apply w-1/2;
+                    @apply w-1/4;
                 }
                 span {
-                    @apply whitespace-nowrap text-ellipsis overflow-hidden w-1/2 text-[#e58e27];
+                    @apply whitespace-nowrap text-ellipsis overflow-hidden w-2/4 text-[#e58e27];
                 }
             }
         }
@@ -59,15 +59,35 @@
             .price {
                 @apply mt-6 flex justify-between w-1/2 items-center;
                 button {
-                    @apply w-1/4;
+                    @apply w-1/4 text-lg;
                 }
                 span {
                     @apply text-2xl text-white font-medium w-1/2;
                 }
             }
+            .SubInfo {
+                @apply flex text-white w-2/3 justify-between mt-12;
+                > li {
+                    @apply flex flex-col;
+                    > b {
+                        @apply text-[#e58e27];
+                    }
+                }
+            }
         }
         &Content {
             @apply w-full;
+            .ScreenShots {
+                @apply mt-96;
+                h3 {
+                    @apply text-[#e27e58] text-2xl mb-10 font-bold mt-48;
+                }
+                @apply w-full h-full mt-24;
+
+                img {
+                    @apply rounded-2xl;
+                }
+            }
         }
     }
 }

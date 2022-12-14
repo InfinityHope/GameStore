@@ -1,0 +1,9 @@
+.HomeTabs {
+    @apply flex text-2xl text-white justify-center pb-12;
+    > li {
+        @apply p-2 text-white text-center w-1/6 cursor-pointer mr-2;
+    }
+    .activeTab {
+        @apply border-2 border-[#e27e58] rounded-2xl;
+    }
+}

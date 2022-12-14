@@ -1,29 +1,15 @@
 .tabsWrapper {
     @apply flex flex-col relative w-full min-h-[300px] mt-28 mb-[0px] mr-auto ml-auto break-all;
-    .Default {
-        @apply flex;
-
+    .TabsHeader {
+        @apply flex w-full;
         > li {
             @apply p-2 text-white text-center w-1/2 cursor-pointer relative outline-0;
         }
-
         .activeTab {
             @apply text-white rounded-tl-2xl rounded-tr-2xl bg-[#282828]/50;
         }
     }
 
-    .SidebarTabs {
-        @apply flex justify-center border-b border-b-white/30 -mb-[1px];
-
-        > li {
-            @apply px-3 py-2 text-white text-center w-1/3 cursor-pointer relative outline-0;
-        }
-
-        .activeTab {
-            @apply text-white rounded-tl-2xl rounded-tr-2xl before:content-[''] before:w-full before:h-full before:top-[1px] before:left-0
-            before:-bottom-[1px] before:border before:border-white/50 before:border-b-black/90 before:absolute before:rounded-t-xl;
-        }
-    }
     .tabsContent {
         @apply flex-grow;
         hr {

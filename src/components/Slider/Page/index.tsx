@@ -6,13 +6,14 @@ import { SliderContext } from '../../../context/SliderContext/SliderContext'
 import styles from './Page.module.scss'
 
 export const Page: FC<{ children: ReactNode }> = ({ children }) => {
-    let { width, slidesToShow, type } = useContext(SliderContext)
+    let { width, slidesToShow, type, slideOffset } = useContext(SliderContext)
 
     return (
         <div
             style={{
-                minWidth: `${width / slidesToShow}px`,
-                maxWidth: `${width / slidesToShow}px`,
+                marginRight: `${slideOffset}px`,
+                minWidth: `${width / slidesToShow - slideOffset}px`,
+                maxWidth: `${width / slidesToShow - slideOffset}px`,
             }}
             className={type === 'Single' ? styles.Single : styles.Multiple}
         >

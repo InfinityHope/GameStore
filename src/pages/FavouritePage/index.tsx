@@ -1,6 +1,6 @@
 import React from 'react'
 import LayoutMain from '../../Layouts/LayoutMain'
-import { useAppSelector } from '../../redux/hooks/redux'
+import { useAppSelector } from '../../hooks/useAppSelector'
 import { Breadcrumbs, Card } from '../../components'
 import styles from './Favourite.module.scss'
 import { NavLink } from 'react-router-dom'

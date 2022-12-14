@@ -2,10 +2,8 @@ import { SubmitHandler, useForm } from 'react-hook-form'
 //Стили
 import styles from './DataView.module.scss'
 //Хуки
-import {
-    useAppDispatch,
-    useAppSelector,
-} from '../../redux/hooks/redux'
+import { useAppSelector } from '../../hooks/useAppSelector'
+import { useAppDispatch } from '../../hooks/useAppDispatch'
 //Типы
 import { IProfileValues } from './Profile.types'
 //Асинхронные функции
@@ -48,11 +46,7 @@ const DataView = () => {
     }
 
     return (
-        <LayoutProfile
-            label={'Личные данные'}
-            link={'/profile/data'}
-            _id={_id}
-        >
+        <LayoutProfile label={'Личные данные'} link={'/profile/data'} _id={_id}>
             <div className={styles.DataView}>
                 <h3>Личные данные</h3>
                 <form onSubmit={handleSubmit(onSubmit)}>
@@ -100,8 +94,7 @@ const DataView = () => {
                         error={errors.password}
                         minLength={{
                             value: 6,
-                            message:
-                                'Минимальная длина пароля 6 символов',
+                            message: 'Минимальная длина пароля 6 символов',
                         }}
                     />
                     <Button>Сохранить</Button>

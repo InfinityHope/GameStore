@@ -4,10 +4,8 @@ import { Outlet, useLocation } from 'react-router'
 //Стили
 import styles from './ProfilePage.module.scss'
 //Хуки
-import {
-    useAppDispatch,
-    useAppSelector,
-} from '../../redux/hooks/redux'
+import { useAppDispatch } from '../../hooks/useAppDispatch'
+import { useAppSelector } from '../../hooks/useAppSelector'
 //Асинхронные функции
 import {
     getUserData,
@@ -20,12 +18,8 @@ import { Spinner } from '../../components'
 import LayoutMain from '../../Layouts/LayoutMain'
 
 const ProfilePage = () => {
-    const { userData, isLoadingUser } = useAppSelector(
-        (state) => state.user
-    )
-    const { _id } = useAppSelector(
-        (state) => state.auth.authData.user
-    )
+    const { userData, isLoadingUser } = useAppSelector((state) => state.user)
+    const { _id } = useAppSelector((state) => state.auth.authData.user)
 
     const location = useLocation()
 
@@ -44,11 +38,7 @@ const ProfilePage = () => {
             ) : (
                 <>
                     {location.pathname === '/profile' ? (
-                        <LayoutProfile
-                            _id={_id}
-                            link={'/profile'}
-                            label={userData.nickName}
-                        >
+                        <LayoutProfile _id={_id} link={'/profile'} label={userData.nickName}>
                             <div className={styles.ProfileView}>
                                 <h3>{userData.nickName}</h3>
                                 <hr />

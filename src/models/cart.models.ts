@@ -3,9 +3,6 @@ export interface ICartItem {
     title: string
     img: string
     price: number
-}
-
-export interface ICart {
-    cartItems: ICartItem[]
-    totalPrice: number
+    regionActivation?: string
+    serviceActivation?: string
 }

@@ -3,10 +3,9 @@ import { FC, useState } from 'react'
 //Стили
 import styles from './SideMenu.module.scss'
 //Хуки
-import { useAppDispatch } from '../../redux/hooks/redux'
+import { useActions } from '../../hooks/useActions'
 //Компоненты
 import { NavLink } from 'react-router-dom'
-import { logout } from '../../redux/reducers/AuthReducer'
 
 const SideMenu: FC<{ _id: string }> = ({ _id }) => {
     const [links] = useState([
@@ -31,11 +30,8 @@ const SideMenu: FC<{ _id: string }> = ({ _id }) => {
             _id,
         },
     ])
-    const dispatch = useAppDispatch()
 
-    const logoutHandler = () => {
-        dispatch(logout())
-    }
+    const { logout } = useActions()
 
     return (
         <ul className={styles.SideMenu}>
@@ -43,9 +39,7 @@ const SideMenu: FC<{ _id: string }> = ({ _id }) => {
                 return (
                     <li key={index}>
                         <NavLink
-                            className={({ isActive }) =>
-                                isActive ? styles.Active : undefined
-                            }
+                            className={({ isActive }) => (isActive ? styles.Active : '')}
                             to={link}
                             state={{ _id }}
                             end={true}
@@ -56,11 +50,7 @@ const SideMenu: FC<{ _id: string }> = ({ _id }) => {
                 )
             })}
             <li>
-                <NavLink
-                    to={'/'}
-                    end={true}
-                    onClick={() => logoutHandler()}
-                >
+                <NavLink to={'/'} end={true} onClick={() => logout()}>
                     Выйти
                 </NavLink>
             </li>

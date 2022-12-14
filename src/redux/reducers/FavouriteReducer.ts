@@ -15,24 +15,18 @@ const FavouriteSlice = createSlice({
     reducers: {
         addFavourite: (state, action: PayloadAction<IFavourite>) => {
             const duplicate = state.favourites.find(
-                (favourite) =>
-                    favourite.productId === action.payload.productId
+                (favourite) => favourite.productId === action.payload.productId
             )
             if (duplicate) {
                 state.favourites = state.favourites.filter(
-                    (favourite) =>
-                        favourite.productId !==
-                        action.payload.productId
+                    (favourite) => favourite.productId !== action.payload.productId
                 )
             } else {
-                state.favourites = [
-                    ...state.favourites,
-                    action.payload,
-                ]
+                state.favourites = [...state.favourites, action.payload]
             }
         },
     },
 })
 
-export const { addFavourite } = FavouriteSlice.actions
+export const favouriteActions = FavouriteSlice.actions
 export default FavouriteSlice.reducer

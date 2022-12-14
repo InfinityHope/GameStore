@@ -1,13 +1,8 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import {
-    getUserData,
-    getUserLibrary,
-    getUserOrders,
-    updateUserData,
-} from './asyncActions'
-import { IUser } from '../../models/user.models'
-import { ILibraryItem } from '../../models/library.models'
-import { IOrder } from '../../models/order.models'
+import { getUserData, getUserLibrary, getUserOrders, updateUserData } from './asyncActions'
+import { IUser } from '../../../models/user.models'
+import { ILibraryItem } from '../../../models/library.models'
+import { IOrder } from '../../../models/order.models'
 
 interface IUserState {
     userData: IUser
@@ -33,70 +28,46 @@ const User = createSlice({
         [getUserData.pending.type]: (state) => {
             state.isLoadingUser = true
         },
-        [getUserData.fulfilled.type]: (
-            state,
-            action: PayloadAction<IUser>
-        ) => {
+        [getUserData.fulfilled.type]: (state, action: PayloadAction<IUser>) => {
             state.isLoadingUser = false
             state.userData = action.payload
         },
-        [getUserData.rejected.type]: (
-            state,
-            action: PayloadAction<string>
-        ) => {
+        [getUserData.rejected.type]: (state, action: PayloadAction<string>) => {
             state.isLoadingUser = false
             state.error = action.payload
         },
         [updateUserData.pending.type]: (state) => {
             state.isLoadingUser = true
         },
-        [updateUserData.fulfilled.type]: (
-            state,
-            action: PayloadAction<IUser>
-        ) => {
+        [updateUserData.fulfilled.type]: (state, action: PayloadAction<IUser>) => {
             state.isLoadingUser = false
             state.userData.email = action.payload.email
             state.userData.nickName = action.payload.nickName
             state.userData.firstName = action.payload.firstName
         },
-        [updateUserData.rejected.type]: (
-            state,
-            action: PayloadAction<string>
-        ) => {
+        [updateUserData.rejected.type]: (state, action: PayloadAction<string>) => {
             state.isLoadingUser = false
             state.error = action.payload
         },
         [getUserLibrary.pending.type]: (state) => {
             state.isLoadingUser = true
         },
-        [getUserLibrary.fulfilled.type]: (
-            state,
-            action: PayloadAction<ILibraryItem[]>
-        ) => {
+        [getUserLibrary.fulfilled.type]: (state, action: PayloadAction<ILibraryItem[]>) => {
             state.isLoadingUser = false
             state.userLibrary = action.payload
         },
-        [getUserLibrary.rejected.type]: (
-            state,
-            action: PayloadAction<string>
-        ) => {
+        [getUserLibrary.rejected.type]: (state, action: PayloadAction<string>) => {
             state.isLoadingUser = false
             state.error = action.payload
         },
         [getUserOrders.pending.type]: (state) => {
             state.isLoadingUser = true
         },
-        [getUserOrders.fulfilled.type]: (
-            state,
-            action: PayloadAction<IOrder[]>
-        ) => {
+        [getUserOrders.fulfilled.type]: (state, action: PayloadAction<IOrder[]>) => {
             state.isLoadingUser = false
             state.userOrders = action.payload
         },
-        [getUserOrders.rejected.type]: (
-            state,
-            action: PayloadAction<string>
-        ) => {
+        [getUserOrders.rejected.type]: (state, action: PayloadAction<string>) => {
             state.isLoadingUser = false
             state.error = action.payload
         },

@@ -6,20 +6,18 @@ import styles from './AuthForm.module.scss'
 //Типы
 import { IFormValues } from './AuthForm.types'
 //Хуки
-import { useAppDispatch } from '../../redux/hooks/redux'
 //Асинхронные функции
-import {
-    loginUser,
-    registerUser,
-} from '../../redux/reducers/AuthReducer/asyncActions'
 //Контекст
 import { SidebarContext } from '../../context/SidebarContext/SidebarContext'
 //Компоненты
 import { Button, Input } from '../UI'
+import { useLoginUserMutation, useRegisterUserMutation } from '../../redux/api/authAPI/auth.api'
 
 const AuthForm: FC<{ type: 'Login' | 'Register' }> = ({ type }) => {
     const { showSidebar, activeSidebar } = useContext(SidebarContext)
-    const dispatch = useAppDispatch()
+    const [loginUser, { isError: isErrorLogin, isLoading: isLoadingLogin }] = useLoginUserMutation()
+    const [registerUser, { isError: isErrorRegister, isLoading: isLoadingRegister }] =
+        useRegisterUserMutation()
     const {
         register,
         handleSubmit,
@@ -34,15 +32,26 @@ const AuthForm: FC<{ type: 'Login' | 'Register' }> = ({ type }) => {
         },
     })
 
-    const onSubmit: SubmitHandler<IFormValues> = (data): void => {
+    const onSubmit: SubmitHandler<IFormValues> = async (data) => {
         const { email, password, firstName, nickName } = data
-        if (type === 'Register') {
-            dispatch(registerUser({ email, password, firstName, nickName }))
-            if (showSidebar) {
-                showSidebar()
+        try {
+            if (type === 'Register') {
+                const data = await registerUser({
+                    email,
+                    password,
+                    firstName,
+                    nickName,
+                }).unwrap()
+                console.log(data)
+                localStorage.setItem('auth', JSON.stringify(data))
+            } else {
+                const data = await loginUser({ email, password }).unwrap()
+                console.log(data)
+                localStorage.setItem('auth', JSON.stringify(data))
             }
-        } else {
-            dispatch(loginUser({ email, password }))
+        } catch (e) {
+            console.log(e)
+        } finally {
             if (showSidebar) {
                 showSidebar()
             }

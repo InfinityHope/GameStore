@@ -5,6 +5,7 @@ import {
     FavouritePage,
     HomePage,
     NewsPage,
+    NotFoundPage,
     ProfilePage,
     SinglePage,
 } from './pages'
@@ -58,6 +59,10 @@ export const router = () => {
                     element: <LibraryView />,
                 },
             ],
+        },
+        {
+            path: '*',
+            element: <NotFoundPage />,
         },
     ])
 }

@@ -3,7 +3,7 @@ import { FC, useContext } from 'react'
 //Стили
 import styles from './Header.module.scss'
 //Хуки
-import { useAppSelector } from '../../redux/hooks/redux'
+import { useAppSelector } from '../../hooks/useAppSelector'
 //Контекст
 import { SidebarContext } from '../../context/SidebarContext/SidebarContext'
 //Компоненты
@@ -13,7 +13,6 @@ import { Button } from '../UI'
 
 const Header: FC = () => {
     const { authData } = useAppSelector((state) => state.auth)
-
     const { showSidebar } = useContext(SidebarContext)
 
     return (
@@ -69,10 +68,7 @@ const Header: FC = () => {
                     </NavLink>
                     {authData.token ? (
                         <button>
-                            <NavLink
-                                to={`/profile`}
-                                state={{ id: authData.user._id }}
-                            >
+                            <NavLink to={`/profile`} state={{ id: authData.user._id }}>
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
                                     data-name="Layer 1"

@@ -22,10 +22,16 @@
         .CartItemPrice {
             @apply text-2xl mt-4;
         }
-        .CartItemRegions {
-            @apply mt-8 border-t border-t-gray-600;
-            > span {
-                @apply text-[#e58e27];
+        .CartItemActivation {
+            @apply mt-8 border-t border-t-gray-600 flex w-full;
+            li {
+                @apply flex w-full;
+                span {
+                    @apply text-[#e58e27];
+                }
+                b {
+                    @apply ml-2;
+                }
             }
         }
     }

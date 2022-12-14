@@ -1,6 +1,7 @@
 import { FC, useRef } from 'react'
 import styles from './Order.module.scss'
 import { NavLink } from 'react-router-dom'
+import { transformString } from '../../utils/transformString'
 
 interface IProps {
     date: string
@@ -11,21 +12,12 @@ interface IProps {
     title: string
 }
 
-const Order: FC<IProps> = ({
-    date,
-    price,
-    img,
-    licenseKey,
-    productId,
-    title,
-}) => {
+const Order: FC<IProps> = ({ date, price, img, licenseKey, productId, title }) => {
     const licenseKeyRef = useRef<HTMLLIElement>(null)
 
     const copyKey = async () => {
         if (licenseKeyRef.current) {
-            await navigator.clipboard.writeText(
-                licenseKeyRef.current.textContent || ''
-            )
+            await navigator.clipboard.writeText(licenseKeyRef.current.textContent || '')
         }
     }
 
@@ -64,7 +56,11 @@ const Order: FC<IProps> = ({
                 </li>
             </ul>
             <span>{price} ₽</span>
-            <NavLink to={`/catalog/${productId}`} className={styles.OrderImg}>
+            <NavLink
+                to={`/catalog/${transformString(title)}`}
+                state={{ id: productId }}
+                className={styles.OrderImg}
+            >
                 <img src={img} alt="product-img" />
             </NavLink>
         </div>

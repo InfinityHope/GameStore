@@ -1,23 +1,33 @@
+//Библиотеки
 import React, { useContext } from 'react'
-import LayoutMain from '../../Layouts/LayoutMain'
-import { Breadcrumbs, CartItem } from '../../components'
+//Стили
 import styles from './CartPage.module.scss'
-import { useAppDispatch, useAppSelector } from '../../redux/hooks/redux'
+//Хуки
+import { useAppSelector } from '../../hooks/useAppSelector'
+//Асинхронные экшены
+//Контекст
 import { SidebarContext } from '../../context/SidebarContext/SidebarContext'
+//Компоненты
+import LayoutMain from '../../Layouts/LayoutMain'
 import { Button } from '../../components/UI'
-import { createOrder } from '../../redux/reducers/CartReducer/asyncActions'
 import { NavLink } from 'react-router-dom'
+import { Breadcrumbs, CartItem } from '../../components'
+import { useCreateOrderMutation } from '../../redux/api/orderAPI/order.api'
+import { useActions } from '../../hooks/useActions'
 
 const CartPage = () => {
     const { cartItems, totalPrice } = useAppSelector((state) => state.cart)
     const { token, user } = useAppSelector((state) => state.auth.authData)
+    const { clearCart } = useActions()
+    const [createOrder, { isLoading, isError }] = useCreateOrderMutation()
     const { showSidebar } = useContext(SidebarContext)
-    const dispatch = useAppDispatch()
 
     const createOrderHandler = () => {
         if (token) {
             const userId = user._id
-            dispatch(createOrder({ cartItems, userId }))
+            createOrder({ cartItems, userId }).then(() => {
+                clearCart()
+            })
         } else {
             if (showSidebar) {
                 showSidebar()
@@ -49,22 +59,24 @@ const CartPage = () => {
                             </NavLink>
                         </div>
                     ) : (
-                        <>
-                            <div className={styles.CartItems}>
-                                <h2>Мой заказ</h2>
-                                {cartItems.map((cartItem) => {
-                                    return <CartItem key={cartItem.productId} {...cartItem} />
-                                })}
-                            </div>
-                            <div className={styles.CartTotal}>
-                                <div>
-                                    <span>Итого:</span>
-                                    <span>{totalPrice} ₽</span>
+                        !isLoading && (
+                            <>
+                                <div className={styles.CartItems}>
+                                    <h2>Мой заказ</h2>
+                                    {cartItems.map((cartItem) => {
+                                        return <CartItem key={cartItem.productId} {...cartItem} />
+                                    })}
                                 </div>
-                                <hr />
-                                <Button onClick={createOrderHandler}>Оплатить</Button>
-                            </div>
-                        </>
+                                <div className={styles.CartTotal}>
+                                    <div>
+                                        <span>Итого:</span>
+                                        <span>{totalPrice} ₽</span>
+                                    </div>
+                                    <hr />
+                                    <Button onClick={createOrderHandler}>Оплатить</Button>
+                                </div>
+                            </>
+                        )
                     )}
                 </div>
             </div>

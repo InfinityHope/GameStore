@@ -1,19 +1,14 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { ICartItem } from '../../models/cart.models'
-import { createOrder } from './asyncActions'
 
-interface ICartState {
-    cartItems: ICartItem[]
+interface ICartState<T> {
+    cartItems: T[]
     totalPrice: number
-    error: string
-    isLoadingCart: boolean
 }
 
-const initialState: ICartState = {
+const initialState: ICartState<ICartItem> = {
     cartItems: [],
     totalPrice: 0,
-    error: '',
-    isLoadingCart: false,
 }
 
 const Cart = createSlice({
@@ -27,8 +22,7 @@ const Cart = createSlice({
 
             if (duplicate) {
                 state.cartItems = state.cartItems.filter(
-                    (item) =>
-                        item.productId !== action.payload.productId
+                    (item) => item.productId !== action.payload.productId
                 )
             } else {
                 state.cartItems.push(action.payload)
@@ -41,24 +35,12 @@ const Cart = createSlice({
             )
             state.totalPrice -= action.payload.price
         },
-    },
-    extraReducers: {
-        [createOrder.pending.type]: (state) => {
-            state.isLoadingCart = true
-        },
-        [createOrder.fulfilled.type]: (state) => {
-            state.isLoadingCart = false
+        clearCart: (state) => {
             state.cartItems = []
-        },
-        [createOrder.pending.type]: (
-            state,
-            action: PayloadAction<string>
-        ) => {
-            state.isLoadingCart = false
-            state.error = action.payload
+            state.totalPrice = 0
         },
     },
 })
 
-export const { addCartItem, deleteCartItem } = Cart.actions
+export const cartActions = Cart.actions
 export default Cart.reducer

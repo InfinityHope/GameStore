@@ -11,40 +11,35 @@ interface IProps {
     children: any
     type?: 'Single' | 'Multiple'
     slidesToShow?: number
-    autoPlay?: boolean
+    disableLastBtn?: boolean
+    infinite?: boolean
+    slideOffset?: number
 }
 
 const Slider: FC<IProps> & { Page: FC<{ children: ReactNode }> } = ({
     children,
     type = 'Single',
     slidesToShow = 1,
-    autoPlay = false,
+    disableLastBtn = false,
+    infinite = false,
+    slideOffset = 0,
 }) => {
     const [offset, setOffset] = useState(0)
     const windowRef = useRef<HTMLDivElement>(null)
+    const sliderRef = useRef<HTMLDivElement>(null)
     const [width, setWidth] = useState(0)
 
     useEffect(() => {
-        let autoplayInterval: NodeJS.Timeout
-        if (autoPlay) {
-            autoplayInterval = setInterval(handleOnNextClick, 3000)
-        }
-        if (windowRef.current) {
-            setWidth(windowRef.current.clientWidth)
-            windowRef.current.addEventListener('mouseenter', () => clearInterval(autoplayInterval))
-            windowRef.current.addEventListener('mouseleave', () =>
-                setInterval(handleOnNextClick, 3000)
-            )
-        }
-
-        return () => clearInterval(autoplayInterval)
-    }, [width])
+        if (windowRef.current) setWidth(windowRef.current.clientWidth)
+    }, [width, windowRef, sliderRef])
 
     const handleOnNextClick = (): void => {
         setOffset((currentOffset) => {
             let newOffset = currentOffset - width / slidesToShow
             let maxOffset = -((width / slidesToShow) * (children.length - 1))
-            if (newOffset < -(width * children.length - 1)) newOffset = 0
+            if (infinite) {
+                if (newOffset < -(width * children.length - 1)) newOffset = 0
+            }
             return Math.max(newOffset, maxOffset)
         })
     }
@@ -52,14 +47,16 @@ const Slider: FC<IProps> & { Page: FC<{ children: ReactNode }> } = ({
     const handleOnPrevClick = (): void => {
         setOffset((currentOffset) => {
             let newOffset = currentOffset + width / slidesToShow
-            if (newOffset > 0) newOffset = -(width * (children.length - 1))
+            if (infinite) {
+                if (newOffset > 0) newOffset = -(width * (children.length - 1))
+            }
             return Math.min(newOffset, 0)
         })
     }
 
     return (
-        <SliderContext.Provider value={{ width, slidesToShow, type }}>
-            <div className={styles.slider}>
+        <SliderContext.Provider value={{ width, slidesToShow, type, slideOffset }}>
+            <div className={styles.slider} ref={sliderRef}>
                 <div className={styles.window} ref={windowRef}>
                     <div className={styles.slides} style={{ transform: `translateX(${offset}px)` }}>
                         {children}
@@ -77,8 +74,8 @@ const Slider: FC<IProps> & { Page: FC<{ children: ReactNode }> } = ({
                     <button
                         onClick={handleOnNextClick}
                         disabled={
-                            offset === -((width / slidesToShow) * children.length - width) &&
-                            type === 'Multiple'
+                            offset === -((width / slidesToShow) * children?.length - width) &&
+                            disableLastBtn
                         }
                     >
                         <GrFormNext size={30} />

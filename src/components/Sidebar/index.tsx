@@ -14,11 +14,7 @@ const Sidebar: FC = () => {
     const toggleSidebar = (event: MouseEvent) => {
         const target = event.target as HTMLDivElement
 
-        if (
-            target.contains(sidebarRef.current) &&
-            target !== sidebarRef.current &&
-            activeSidebar
-        ) {
+        if (target.contains(sidebarRef.current) && target !== sidebarRef.current && activeSidebar) {
             if (showSidebar) {
                 showSidebar()
             }
@@ -36,14 +32,13 @@ const Sidebar: FC = () => {
     return (
         <div
             className={`${styles.Sidebar} ${
-                activeSidebar
-                    ? 'translate-x-0 opacity-100'
-                    : 'translate-x-full opacity-0'
+                activeSidebar ? 'translate-x-0 opacity-100' : 'translate-x-full opacity-0'
             }`}
         >
             <div ref={sidebarRef}>
                 <Tabs
-                    type={'SidebarTabs'}
+                    tabsClass={styles.SidebarTabs}
+                    activeTabClass={styles.activeTab}
                     tabs={[
                         {
                             name: 'Вход',

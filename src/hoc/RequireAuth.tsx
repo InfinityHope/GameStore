@@ -2,7 +2,7 @@
 import { PropsWithChildren } from 'react'
 import { Navigate } from 'react-router'
 //Хуки
-import { useAppSelector } from '../redux/hooks/redux'
+import { useAppSelector } from '../hooks/useAppSelector'
 
 interface IProps {
     children: JSX.Element

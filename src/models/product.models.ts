@@ -1,7 +1,7 @@
-export interface IProductsData {
+export interface IProductsData<T> {
     limit: number
     page: number
-    products: IProduct[]
+    products: T[]
     pages: number
     total: number
 }
@@ -12,7 +12,7 @@ export interface IProduct {
     title: string
     platform: string
     availability: boolean
-    releaseDate: string
+    releaseDate: Date
     price: number
     developer: string
     publisher: string
@@ -22,6 +22,10 @@ export interface IProduct {
         minimal: IRequirements
         recommended: IRequirements
     }
+    language: string
+    serviceActivation: string
+    regionActivation: string
+    screenShots: string[]
     licenseKeys: string[]
     toSlider: boolean
     sliderImg: string

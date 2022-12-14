@@ -1,59 +1,45 @@
 //Библиотеки
 import { FC } from 'react'
 //хуки
-import { useAppDispatch, useAppSelector } from '../../redux/hooks/redux'
+import { useAppSelector } from '../../hooks/useAppSelector'
+import { useActions } from '../../hooks/useActions'
+import { useExistInCart } from '../../hooks/useExistInCart'
 //Стили
 import styles from './Card.module.scss'
-//Типы
-import { ICartItem } from '../../redux/models/cart.models'
-import { IFavourite } from '../../redux/models/favourite.models'
-//Экшены
-import { addFavourite } from '../../redux/reducers/FavouriteReducer'
-import { addCartItem } from '../../redux/reducers/CartReducer'
+//Утилиты
+import { transformString } from '../../utils/transformString'
 //Компоненты
 import { NavLink } from 'react-router-dom'
 import { Button } from '../UI'
+import { useExistInFavourites } from '../../hooks/useExistInFavourites'
 
 interface IProps {
     _id: string
     title: string
     img: string
+    serviceActivation?: string
+    regionActivation?: string
     price?: number
     type?: 'Product' | 'LibraryGame'
 }
 
-const Card: FC<IProps> = ({ _id, title, img, price = 0, type = 'Product' }) => {
-    const { cartItems } = useAppSelector((state) => state.cart)
+const Card: FC<IProps> = ({
+    _id,
+    title,
+    img,
+    price = 0,
+    type = 'Product',
+    serviceActivation,
+    regionActivation,
+}) => {
     const { favourites } = useAppSelector((state) => state.favourite)
-
-    const dispatch = useAppDispatch()
-
-    const addCartItemHandler = ({ productId, title, img, price }: ICartItem) => {
-        dispatch(
-            addCartItem({
-                productId,
-                price,
-                img,
-                title,
-            })
-        )
-    }
-
-    const addFavouriteHandler = ({ productId, title, price, img }: IFavourite) => {
-        dispatch(
-            addFavourite({
-                productId,
-                title,
-                price,
-                img,
-                isFavourite: true,
-            })
-        )
-    }
+    const { addCartItem, addFavourite } = useActions()
+    const inCart = useExistInCart(_id)
+    const inFavourites = useExistInFavourites(_id)
 
     return (
         <div className={type === 'Product' ? `${styles.Card}  hover:-translate-y-2` : styles.Card}>
-            <NavLink to={`/catalog/${_id}`}>
+            <NavLink to={`/catalog/${transformString(title)}`} state={{ id: _id }}>
                 <div>
                     <img src={img} alt="poster" />
                 </div>
@@ -68,28 +54,26 @@ const Card: FC<IProps> = ({ _id, title, img, price = 0, type = 'Product' }) => {
                     <Button
                         type={'Card'}
                         onClick={() =>
-                            addCartItemHandler({
+                            addCartItem({
                                 productId: _id,
                                 price,
                                 title,
                                 img,
+                                serviceActivation,
+                                regionActivation,
                             })
                         }
                     >
-                        {cartItems.find((cartItem) => cartItem.productId === _id)
-                            ? 'Добавлено'
-                            : 'В корзину'}
+                        {inCart ? 'Добавлено' : 'В корзину'}
                     </Button>
                     <button
                         className={
-                            favourites.find(
-                                (favourite) => favourite.productId === _id && favourite.isFavourite
-                            )
+                            inFavourites
                                 ? `${styles.Favourite} ${styles.ActiveFav}`
                                 : styles.Favourite
                         }
                         onClick={() =>
-                            addFavouriteHandler({
+                            addFavourite({
                                 productId: _id,
                                 title,
                                 price,

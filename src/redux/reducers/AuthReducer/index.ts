@@ -1,9 +1,9 @@
 //Библиотеки
-import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit'
 //Типы
-import { IAuth } from '../../models/auth.models'
+import { IAuth } from '../../../models/auth.models'
+
 //Асинхронные функции
-import { loginUser, registerUser } from './asyncActions'
 
 interface AuthState {
     authData: IAuth
@@ -32,33 +32,7 @@ export const Auth = createSlice({
             }
         },
     },
-    extraReducers: {
-        [loginUser.pending.type]: (state) => {
-            state.isLoadingAuth = true
-        },
-        [loginUser.fulfilled.type]: (state, action: PayloadAction<IAuth>) => {
-            state.isLoadingAuth = false
-            state.authData = action.payload
-            localStorage.setItem('auth', JSON.stringify(action.payload))
-        },
-        [loginUser.rejected.type]: (state, action: PayloadAction<string>) => {
-            state.isLoadingAuth = false
-            state.authError = action.payload
-        },
-        [registerUser.pending.type]: (state) => {
-            state.isLoadingAuth = true
-        },
-        [registerUser.fulfilled.type]: (state, action: PayloadAction<IAuth>) => {
-            state.isLoadingAuth = false
-            state.authData = action.payload
-            localStorage.setItem('auth', JSON.stringify(action.payload))
-        },
-        [registerUser.rejected.type]: (state, action: PayloadAction<string>) => {
-            state.isLoadingAuth = false
-            state.authError = action.payload
-        },
-    },
 })
 
-export const { logout } = Auth.actions
+export const authActions = Auth.actions
 export default Auth.reducer

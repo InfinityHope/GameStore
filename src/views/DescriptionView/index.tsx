@@ -3,7 +3,7 @@ import { FC } from 'react'
 //Стили
 import styles from './DescriptionView.module.scss'
 //Типы
-import { IProduct } from '../../redux/models/product.models'
+import { IProduct } from '../../models/product.models'
 
 const DescriptionView: FC<{ product: IProduct }> = ({ product }) => {
     return (
