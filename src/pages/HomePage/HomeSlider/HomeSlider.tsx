@@ -26,10 +26,7 @@ const HomeSlider = () => {
                         <img src={`/slides/${product.sliderImg}`} alt="slide" />
                     </div>
                     <article>
-                        <NavLink
-                            to={`/catalog/${transformString(product.title)}`}
-                            state={{ id: product._id }}
-                        >
+                        <NavLink to={`/catalog/${transformString(product.title)}`} state={_id}>
                             {product.title}
                         </NavLink>
                         <div>
