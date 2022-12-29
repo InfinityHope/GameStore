@@ -59,6 +59,10 @@ const CatalogPage = () => {
         setPublishers([])
         setDevelopers([])
         setGenres([])
+        setSortType({
+            label: 'По популярности',
+            value: 'popularityDesc',
+        })
     }
 
     return (
