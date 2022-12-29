@@ -28,8 +28,8 @@ const AuthForm: FC<{ type: 'Login' | 'Register' }> = ({ type }) => {
     } = useForm<IFormValues>({
         mode: 'onBlur',
         defaultValues: {
-            email: 'bigbasspoll@gmail.com',
-            password: 'Xen050501',
+            email: '',
+            password: '',
         },
     })
 
