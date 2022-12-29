@@ -1,9 +1,5 @@
 export const sortData = [
     {
-        label: 'По полуярности',
-        value: 'popularityDesc',
-    },
-    {
         label: 'По алфавиту',
         value: 'titleAsc',
     },

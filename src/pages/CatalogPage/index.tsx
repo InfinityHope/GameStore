@@ -13,8 +13,8 @@ const CatalogPage = () => {
     const [showAllFilters, setShowAllFilters] = useState<boolean>(false)
 
     const [sortType, setSortType] = useState<{ label: string; value: string }>({
-        label: 'По популярности',
-        value: 'popularityDesc',
+        label: 'По убыванию цены',
+        value: 'priceDesc',
     })
     const [genres, setGenres] = useState<string[]>([])
     const [developers, setDevelopers] = useState<string[]>([])
@@ -60,8 +60,8 @@ const CatalogPage = () => {
         setDevelopers([])
         setGenres([])
         setSortType({
-            label: 'По популярности',
-            value: 'popularityDesc',
+            label: '',
+            value: '',
         })
     }
 
