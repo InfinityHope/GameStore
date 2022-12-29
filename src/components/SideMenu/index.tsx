@@ -3,7 +3,7 @@ import { FC, useState } from 'react'
 //Стили
 import styles from './SideMenu.module.scss'
 //Хуки
-import { useActions } from '../../hooks/useActions'
+import { useActions } from '@/hooks/useActions'
 //Компоненты
 import { NavLink } from 'react-router-dom'
 

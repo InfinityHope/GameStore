@@ -1,0 +1,16 @@
+.SearchOverlay {
+    @apply fixed top-0 right-0 w-5/6 bg-black/90 z-40 h-screen pt-32 pl-20 pr-16 pb-20;
+
+    &Title {
+        @apply text-white font-semibold text-xl;
+        > span {
+            @apply text-[#e27e58];
+        }
+    }
+    &Content {
+        @apply pt-12 flex justify-start flex-wrap gap-y-6 overflow-y-auto h-full;
+        > div {
+            @apply mr-4;
+        }
+    }
+}

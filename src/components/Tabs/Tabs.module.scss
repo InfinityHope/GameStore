@@ -3,10 +3,11 @@
     .TabsHeader {
         @apply flex w-full;
         > li {
-            @apply p-2 text-white text-center w-1/2 cursor-pointer relative outline-0;
+            @apply p-2 text-xl text-white text-center w-1/2 cursor-pointer relative outline-0;
         }
         .activeTab {
-            @apply text-white rounded-tl-2xl rounded-tr-2xl bg-[#282828]/50;
+            @apply text-white rounded-tl-2xl rounded-tr-2xl bg-black before:content-[''] before:w-full before:h-full before:top-[1px] before:left-0
+            before:-bottom-[1px] before:border before:border-white  before:border-b-black before:absolute before:rounded-t-xl;
         }
     }
 
@@ -16,7 +17,7 @@
             @apply mt-8 text-gray-700 h-[2px];
         }
         > div {
-            @apply bg-[#282828]/50 rounded-bl-2xl rounded-br-2xl  p-[20px] w-full h-full text-white;
+            @apply bg-black rounded-bl-2xl rounded-br-2xl  p-[20px] w-full h-full text-white border border-white border-t;
         }
     }
 }

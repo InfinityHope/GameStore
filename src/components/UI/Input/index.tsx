@@ -5,7 +5,7 @@ import styles from './Input.module.scss'
 //Типы
 import { FieldError, Path, UseFormRegister } from 'react-hook-form'
 import { IFormValues } from '../../AuthForm/AuthForm.types'
-import { IProfileValues } from '../../../views/DataView/Profile.types'
+import { IProfileValues } from '../../../pages/ProfilePage/DataView/Profile.types'
 
 //Компоненты
 

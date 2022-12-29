@@ -1,0 +1,28 @@
+.Accordion {
+    @apply flex flex-col relative;
+    .Item {
+        @apply w-full h-full  transition transition-all;
+        hr {
+            @apply w-full;
+        }
+        &:last-child {
+            hr {
+                @apply invisible;
+            }
+        }
+        .Title {
+            @apply w-full flex justify-between items-center pr-[5px] font-bold text-2xl pt-6  transition transition-all;
+            > span {
+                @apply cursor-pointer;
+            }
+        }
+        .Content {
+            transition: all 1s ease-in;
+            height: 0;
+        }
+        .Show {
+            transition: all 1s ease-in;
+            height: 100%;
+        }
+    }
+}

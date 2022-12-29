@@ -3,13 +3,13 @@ import { FC, useContext } from 'react'
 //Стили
 import styles from './Header.module.scss'
 //Хуки
-import { useAppSelector } from '../../hooks/useAppSelector'
+import { useAppSelector } from '@/hooks/useAppSelector'
 //Контекст
-import { SidebarContext } from '../../context/SidebarContext/SidebarContext'
+import { SidebarContext } from '@/context/SidebarContext/SidebarContext'
 //Компоненты
 import { NavLink } from 'react-router-dom'
-import { Navbar, SearchInput } from '../'
-import { Button } from '../UI'
+import { Navbar, SearchInput } from '@/components'
+import { Button } from '@/components/UI'
 
 const Header: FC = () => {
     const { authData } = useAppSelector((state) => state.auth)

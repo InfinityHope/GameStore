@@ -1,0 +1,6 @@
+.Requirements {
+    @apply rounded-tl-2xl;
+    > div {
+        @apply flex justify-between items-center pr-[5px] pt-6;
+    }
+}

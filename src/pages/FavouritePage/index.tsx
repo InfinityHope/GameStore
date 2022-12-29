@@ -1,16 +1,15 @@
 import React from 'react'
-import LayoutMain from '../../Layouts/LayoutMain'
-import { useAppSelector } from '../../hooks/useAppSelector'
-import { Breadcrumbs, Card } from '../../components'
+import { useAppSelector } from '@/hooks/useAppSelector'
+import { Breadcrumbs, Card } from '@/components'
 import styles from './Favourite.module.scss'
 import { NavLink } from 'react-router-dom'
-import { Button } from '../../components/UI'
+import { Button } from '@/components/UI'
 
 const FavouritePage = () => {
     const { favourites } = useAppSelector((state) => state.favourite)
 
     return (
-        <LayoutMain>
+        <>
             <Breadcrumbs
                 breadcrumbs={[
                     {
@@ -43,7 +42,7 @@ const FavouritePage = () => {
                     </div>
                 )}
             </div>
-        </LayoutMain>
+        </>
     )
 }
 

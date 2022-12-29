@@ -1,19 +1,25 @@
 //Библиотеки
-import { FC, useEffect, useState } from 'react'
+import { FC, useContext } from 'react'
 //Стили
 import styles from './SearchInput.module.scss'
+import { SearchOverlayContext } from '@/context/SearchOverlayContext/SearchOverlayContext'
 
 const SearchInput: FC = () => {
-    const [searchValue, setSearchValue] = useState('')
+    const { searchTerm, changeSearchTerm, showOverlay } = useContext(SearchOverlayContext)
 
-    useEffect(() => {}, [])
+    const show = () => {
+        showOverlay(true)
+        document.body.style.overflow = 'hidden'
+    }
 
     return (
         <div className={styles.Search}>
             <input
                 type="text"
-                value={searchValue}
-                onChange={(e) => setSearchValue(e.target.value)}
+                value={searchTerm}
+                onFocus={show}
+                placeholder={'Поиск по играм...'}
+                onChange={(e) => changeSearchTerm(e)}
             />
             <button />
         </div>

@@ -6,18 +6,19 @@ import styles from './AuthForm.module.scss'
 //Типы
 import { IFormValues } from './AuthForm.types'
 //Хуки
-//Асинхронные функции
+import { useActions } from '@/hooks/useActions'
 //Контекст
-import { SidebarContext } from '../../context/SidebarContext/SidebarContext'
+import { SidebarContext } from '@/context/SidebarContext/SidebarContext'
 //Компоненты
-import { Button, Input } from '../UI'
-import { useLoginUserMutation, useRegisterUserMutation } from '../../redux/api/authAPI/auth.api'
+import { Button, Input } from '@/components/UI'
+import { useLoginUserMutation, useRegisterUserMutation } from '@/reduxApi/authAPI/auth.api'
 
 const AuthForm: FC<{ type: 'Login' | 'Register' }> = ({ type }) => {
     const { showSidebar, activeSidebar } = useContext(SidebarContext)
-    const [loginUser, { isError: isErrorLogin, isLoading: isLoadingLogin }] = useLoginUserMutation()
-    const [registerUser, { isError: isErrorRegister, isLoading: isLoadingRegister }] =
-        useRegisterUserMutation()
+    const [loginUser, { isError: isErrorLogin }] = useLoginUserMutation()
+    const [registerUser, { isError: isErrorRegister }] = useRegisterUserMutation()
+    const { setAuth } = useActions()
+
     const {
         register,
         handleSubmit,
@@ -36,21 +37,14 @@ const AuthForm: FC<{ type: 'Login' | 'Register' }> = ({ type }) => {
         const { email, password, firstName, nickName } = data
         try {
             if (type === 'Register') {
-                const data = await registerUser({
-                    email,
-                    password,
-                    firstName,
-                    nickName,
-                }).unwrap()
-                console.log(data)
-                localStorage.setItem('auth', JSON.stringify(data))
+                const data = await registerUser({ email, password, firstName, nickName }).unwrap()
+                setAuth(data)
             } else {
                 const data = await loginUser({ email, password }).unwrap()
-                console.log(data)
-                localStorage.setItem('auth', JSON.stringify(data))
+                setAuth(data)
             }
         } catch (e) {
-            console.log(e)
+            console.log(isErrorLogin || isErrorRegister)
         } finally {
             if (showSidebar) {
                 showSidebar()

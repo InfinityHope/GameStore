@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { ICartItem } from '../../models/cart.models'
+import { ICartItem } from '@/models/cart.models'
+import { calculateTotalPrice } from '@/utils/calculateTotalPrice'
 
 interface ICartState<T> {
     cartItems: T[]
@@ -26,18 +27,18 @@ const Cart = createSlice({
                 )
             } else {
                 state.cartItems.push(action.payload)
-                state.totalPrice += action.payload.price
+                state.totalPrice = calculateTotalPrice(state.cartItems)
             }
         },
         deleteCartItem: (state, action: PayloadAction<ICartItem>) => {
             state.cartItems = state.cartItems.filter(
                 (item) => item.productId !== action.payload.productId
             )
-            state.totalPrice -= action.payload.price
+            state.totalPrice = calculateTotalPrice(state.cartItems)
         },
         clearCart: (state) => {
             state.cartItems = []
-            state.totalPrice = 0
+            state.totalPrice = calculateTotalPrice(state.cartItems)
         },
     },
 })

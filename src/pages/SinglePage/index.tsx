@@ -1,26 +1,35 @@
 //Стили
 import styles from './SinglePage.module.scss'
 //Хуки
-import { useLocation } from 'react-router'
-import { useActions } from '../../hooks/useActions'
-import { useGetProductQuery } from '../../redux/api/productsAPI/products.api'
-import { useExistInCart } from '../../hooks/useExistInCart'
-import { useExistInFavourites } from '../../hooks/useExistInFavourites'
+import { useLocation, useNavigate } from 'react-router'
+import { useActions } from '@/hooks/useActions'
+import { useGetProductQuery } from '@/redux/api/productsAPI/products.api'
+import { useExistInCart } from '@/hooks/useExistInCart'
+import { useExistInFavourites } from '@/hooks/useExistInFavourites'
 //Компоненты
-import { Breadcrumbs, Slider, Spinner, Tabs } from '../../components'
-import { DescriptionView, RequirementsView } from '../../views'
-import { Button } from '../../components/UI'
-import LayoutMain from '../../Layouts/LayoutMain'
+import { Breadcrumbs, Slider, Spinner, Tabs } from '@/components'
+import DescriptionView from './DescriptionView'
+import RequirementsView from './RequirementsView'
+import { Button } from '@/components/UI'
+import { useEffect } from 'react'
 
 const SinglePage = () => {
-    const { id } = useLocation().state
-    const { data: product, isLoading } = useGetProductQuery(id)
+    const location = useLocation()
+    const navigate = useNavigate()
+    const { data: product, isLoading } = useGetProductQuery(location.state)
     const { addFavourite, addCartItem } = useActions()
-    const inCart = useExistInCart(id)
-    const inFavourites = useExistInFavourites(id)
+
+    useEffect(() => {
+        if (!location.state) {
+            navigate('/not-found')
+        }
+    }, [location.state])
+
+    const inCart = useExistInCart(location.state)
+    const inFavourites = useExistInFavourites(location.state)
 
     return (
-        <LayoutMain>
+        <>
             {isLoading ? (
                 <Spinner />
             ) : (
@@ -47,7 +56,10 @@ const SinglePage = () => {
                                     <li>
                                         <p>Дата выхода:</p>
                                         <span>
-                                            {new Date(product.releaseDate).toLocaleDateString()}
+                                            {new Date(product.releaseDate).toLocaleDateString(
+                                                'ru',
+                                                { month: 'long', year: 'numeric', day: 'numeric' }
+                                            )}
                                         </span>
                                     </li>
                                     <li>
@@ -142,7 +154,7 @@ const SinglePage = () => {
                                             disableLastBtn
                                         >
                                             {product.screenShots?.map((screen) => (
-                                                <Slider.Page>
+                                                <Slider.Page key={screen}>
                                                     <img src={screen} alt="slide" />
                                                 </Slider.Page>
                                             ))}
@@ -166,7 +178,7 @@ const SinglePage = () => {
                     </>
                 )
             )}
-        </LayoutMain>
+        </>
     )
 }
 

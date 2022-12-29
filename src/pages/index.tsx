@@ -6,8 +6,10 @@ import ProfilePage from './ProfilePage'
 import CartPage from './CartPage'
 import FavouritePage from './FavouritePage'
 import NotFoundPage from './NotFoundPage'
+import SearchPage from './SearchPage'
 
 export {
+    SearchPage,
     NewsPage,
     CatalogPage,
     HomePage,

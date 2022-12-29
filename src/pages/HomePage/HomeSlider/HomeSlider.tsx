@@ -1,10 +1,10 @@
 import React from 'react'
-import { Slider, Spinner } from '../../../components'
+import { Slider, Spinner } from '@/components'
 import { NavLink } from 'react-router-dom'
-import { Button } from '../../../components/UI'
-import { transformString } from '../../../utils/transformString'
-import { useGetSliderProductsQuery } from '../../../redux/api/productsAPI/products.api'
-import { useActions } from '../../../hooks/useActions'
+import { Button } from '@/components/UI'
+import { transformString } from '@/utils/transformString'
+import { useGetSliderProductsQuery } from '@/reduxApi/productsAPI/products.api'
+import { useActions } from '@/hooks/useActions'
 
 const HomeSlider = () => {
     const { data, isLoading } = useGetSliderProductsQuery(null)
@@ -20,10 +20,7 @@ const HomeSlider = () => {
             return (
                 <Slider.Page key={product._id}>
                     <div>
-                        <img
-                            src={`${process.env.PUBLIC_URL}/slides/${product.sliderImg}`}
-                            alt="slide"
-                        />
+                        <img src={`/slides/${product.sliderImg}`} alt="slide" />
                     </div>
                     <article>
                         <NavLink
@@ -45,7 +42,7 @@ const HomeSlider = () => {
                                     })
                                 }
                             >
-                                {'В корзину'}
+                                В корзину
                             </Button>
                             <span>{product.price} ₽</span>
                         </div>

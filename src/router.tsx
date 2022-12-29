@@ -9,41 +9,79 @@ import {
     ProfilePage,
     SinglePage,
 } from './pages'
-import RequireAuth from './hoc/RequireAuth'
-import { DataView, LibraryView, OrdersView } from './views'
+import RequireAuth from '@/hoc/RequireAuth'
+import LayoutMain from '@/layouts/LayoutMain'
+import OrdersView from '@/pages/ProfilePage/OrdersView'
+import LibraryView from '@/pages/ProfilePage/LibraryView'
+import DataView from '@/pages/ProfilePage/DataView'
+import { SearchPage } from '@/pages'
 
 export const router = () => {
     return createBrowserRouter([
         {
             path: '/',
-            element: <HomePage />,
+            element: (
+                <LayoutMain>
+                    <HomePage />
+                </LayoutMain>
+            ),
         },
         {
             path: '/catalog',
-            element: <CatalogPage />,
+            element: (
+                <LayoutMain>
+                    <CatalogPage />
+                </LayoutMain>
+            ),
         },
         {
             path: 'catalog/:id',
-            element: <SinglePage />,
+            element: (
+                <LayoutMain>
+                    <SinglePage />
+                </LayoutMain>
+            ),
         },
         {
             path: '/news',
-            element: <NewsPage />,
+            element: (
+                <LayoutMain>
+                    <NewsPage />
+                </LayoutMain>
+            ),
+        },
+        {
+            path: '/search',
+            element: (
+                <LayoutMain>
+                    <SearchPage />
+                </LayoutMain>
+            ),
         },
         {
             path: '/favourite',
-            element: <FavouritePage />,
+            element: (
+                <LayoutMain>
+                    <FavouritePage />
+                </LayoutMain>
+            ),
         },
         {
             path: '/cart',
-            element: <CartPage />,
+            element: (
+                <LayoutMain>
+                    <CartPage />
+                </LayoutMain>
+            ),
         },
         {
             path: '/profile',
             element: (
-                <RequireAuth>
-                    <ProfilePage />
-                </RequireAuth>
+                <LayoutMain>
+                    <RequireAuth>
+                        <ProfilePage />
+                    </RequireAuth>
+                </LayoutMain>
             ),
             children: [
                 {
@@ -61,8 +99,20 @@ export const router = () => {
             ],
         },
         {
+            path: '/not-found',
+            element: (
+                <LayoutMain>
+                    <NotFoundPage />
+                </LayoutMain>
+            ),
+        },
+        {
             path: '*',
-            element: <NotFoundPage />,
+            element: (
+                <LayoutMain>
+                    <NotFoundPage />
+                </LayoutMain>
+            ),
         },
     ])
 }

@@ -1,0 +1,57 @@
+{
+    "title": "GOD OF WAR",
+    "description": {
+        "title": "Воитель, семьянин, бог",
+        "text": "Встречайте очередной бывший эксклюзив Sony, который японская компания решила портировать на ПК со всевозможными улучшениями! Современный God of War — переосмысление культовой серии слэшеров. Здесь намного меньше безумия и расчленёнки, чем в прошлых частях, но игра цепляет не этим. Вместе с разработчиками повзрослел и Кратос, переехавший из Греции в холодную Скандинавию, чтобы заботиться о сыне Атрее подальше от божественных распрей. Однако ему и тут покоя не дают: в один прекрасный день на пороге появляется бессмертный незнакомец, чьи слова заставляют отца с чадом отправиться в полное трудностей путешествие.Повествование ведётся в идеальном темпе — герои проходят через множество межличностных конфликтов, которые сказываются на игровом процессе. На протяжении странствий по измерениям вы сокрушите топором и луком десятки грозных противников, соберёте сет брони под собственный стиль боя и узнаете, что даже внутри богов есть что-то человеческое.В техническом плане проект и на консолях давал остальным фору, теперь же его отполировали и украсили. Помимо бесшовного мира, напрочь лишённого загрузок, вас ждут похорошевшая графика, а также поддержка DLSS и RTX."
+    },
+    "developer": "Santa Monica Studio",
+    "genre": [
+        "Action",
+        "Adventure",
+        "RPG"
+    ],
+    "img": "https://static.gabestore.ru/product/XKIAe1HtRjBJP0FZgs64q6aA7osLWs3k.jpg",
+    "language": "Russian",
+    "price": 3099,
+    "publisher": "PlayStation PC LLC",
+    "regionActivation": "Россия, Беларусь и СНГ",
+    "releaseDate": 1642107600000,
+    "requirements": {
+        "minimal": {
+            "directX": "DirectX: 11.0",
+            "diskStorage": 70,
+            "os": "64-разрядная Windows 10",
+            "processor": "Intel i5-2500k (4 ядра, 3,3 ГГц) или AMD Ryzen 3 1200 (4 ядра, 3,1 ГГц)",
+            "ram": 8,
+            "videoCard": "NVIDIA GTX 960 (4 ГБ) или AMD R9 290X (4 ГБ)"
+        },
+        "recommended": {
+            "directX": "DirectX: 11.0",
+            "diskStorage": 70,
+            "os": "64-разрядная Windows 10",
+            "processor": "Intel i5-6600k (4 ядра, 3,5 ГГц) или AMD Ryzen 5 2400 G (4 ядра, 3,6 ГГц)",
+            "ram": 8,
+            "videoCard": "NVIDIA GTX 1060 (6 ГБ) или AMD RX 570 (4 ГБ)"
+        }
+    },
+    "screenShots": [
+        "https://static.gabestore.ru/screen_product/EN8rslX7mjP-7SYv0v4bALqMDATRz4iG.jpg",
+        "https://static.gabestore.ru/screen_product/vAvmohXcyC0XQsfuIMBL55i3pPdea7do.jpg",
+        "https://static.gabestore.ru/screen_product/sCqgNeUzoaZ_UBvfi_QgWQEmUiK6xTdM.jpg",
+        "https://static.gabestore.ru/screen_product/J-fSO9LdTKzcgHBB8676g_KWqAF8Uy0k.jpg",
+        "https://static.gabestore.ru/screen_product/E22dmDe3JJdS92aRI2n6MFHnHvOG-gUv.jpg",
+        "https://static.gabestore.ru/screen_product/iK0EY3MVQUUX8MUtOsc6pXd2LSZ-YxKa.jpg"
+    ],
+    "licenseKeys": [
+        "OHQYX-AB3QZ-MNY7L",
+        "SRAI4-C5MF3-AY510",
+        "OE3QD-Q76ON-E1NAR",
+        "8XKKL-VMHHK-YPKM4",
+        "YLBSE-KPR99-Z4XGS",
+        "0BYHG-LP05F-K52ZI",
+        "TZKZ7-4THR8-CP0D"
+    ],
+    "serviceActivation": "Steam",
+    "regionActivation": "Россия, Беларусь и СНГ",
+    "toSlider": false
+}

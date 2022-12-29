@@ -5,7 +5,7 @@ import styles from './Slider.module.scss'
 //Компоненты
 import { GrFormNext, GrFormPrevious } from 'react-icons/gr'
 import { Page } from './Page'
-import { SliderContext } from '../../context/SliderContext/SliderContext'
+import { SliderContext } from '@/context/SliderContext/SliderContext'
 
 interface IProps {
     children: any
@@ -25,9 +25,10 @@ const Slider: FC<IProps> & { Page: FC<{ children: ReactNode }> } = ({
     slideOffset = 0,
 }) => {
     const [offset, setOffset] = useState(0)
+    const [width, setWidth] = useState(0)
+
     const windowRef = useRef<HTMLDivElement>(null)
     const sliderRef = useRef<HTMLDivElement>(null)
-    const [width, setWidth] = useState(0)
 
     useEffect(() => {
         if (windowRef.current) setWidth(windowRef.current.clientWidth)
@@ -85,5 +86,6 @@ const Slider: FC<IProps> & { Page: FC<{ children: ReactNode }> } = ({
         </SliderContext.Provider>
     )
 }
+
 Slider.Page = Page
 export default Slider

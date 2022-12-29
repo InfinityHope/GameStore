@@ -2,7 +2,7 @@
 import { FC, ReactNode, useContext } from 'react'
 //Стили
 //Контекст
-import { SliderContext } from '../../../context/SliderContext/SliderContext'
+import { SliderContext } from '@/context/SliderContext/SliderContext'
 import styles from './Page.module.scss'
 
 export const Page: FC<{ children: ReactNode }> = ({ children }) => {

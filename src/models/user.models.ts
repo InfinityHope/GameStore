@@ -1,4 +1,4 @@
-import { IProfileValues } from '../views/DataView/Profile.types'
+import { IProfileValues } from '../pages/ProfilePage/DataView/Profile.types'
 
 export interface IUser {
     firstName: string

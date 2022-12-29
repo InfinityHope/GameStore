@@ -1,0 +1,23 @@
+.Dropdown {
+    @apply w-[300px] text-white p-2 relative z-30;
+    &Title {
+        @apply p-[4px] border-b flex justify-between items-center cursor-pointer;
+        svg {
+            polyline {
+                stroke: white;
+            }
+        }
+    }
+    &Content {
+        &Wrapper {
+            @apply overflow-y-auto w-full max-h-[150px];
+        }
+        @apply bg-black w-full absolute top-[100%] left-0 w-full p-2 rounded-b-xl;
+    }
+    &Active {
+        @apply bg-black rounded-t-xl;
+        .DropdownTitle {
+            @apply border-b border-b-white/30;
+        }
+    }
+}

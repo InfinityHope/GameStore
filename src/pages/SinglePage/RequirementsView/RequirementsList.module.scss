@@ -1,0 +1,12 @@
+.RequirementsList {
+    @apply text-white flex-col mt-2;
+    > li {
+        @apply flex p-[4px] text-xl;
+        > p {
+            @apply w-1/4 text-gray-500 font-bold;
+        }
+        > span {
+            @apply w-1/2 text-white;
+        }
+    }
+}

@@ -1,7 +1,7 @@
 import { FC, useRef } from 'react'
 import styles from './Order.module.scss'
 import { NavLink } from 'react-router-dom'
-import { transformString } from '../../utils/transformString'
+import { transformString } from '@/utils/transformString'
 
 interface IProps {
     date: string

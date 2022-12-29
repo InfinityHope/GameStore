@@ -1,0 +1,6 @@
+.DropdownItem {
+    @apply p-2 border-b border-b-white/30 w-11/12;
+    &:last-child {
+        @apply border-none;
+    }
+}

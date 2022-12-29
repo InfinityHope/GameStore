@@ -1,0 +1,33 @@
+.Catalog {
+    &Title {
+        @apply text-5xl font-bold text-white py-12;
+    }
+
+    &Filters {
+        @apply flex mt-4 justify-between;
+        &Block {
+            @apply w-3/6 flex;
+            > div {
+                @apply mr-6;
+            }
+        }
+        &Buttons {
+            @apply w-2/6 flex justify-end;
+            > button {
+                @apply w-2/5 mr-2;
+                &:last-child {
+                    @apply mr-0;
+                }
+            }
+        }
+    }
+    &HiddenFilters {
+        @apply flex mt-4;
+        > div {
+            @apply mr-6;
+            &:first-child {
+                @apply mr-[30px];
+            }
+        }
+    }
+}

@@ -1,6 +1,6 @@
 .Card {
     @apply w-[270px] rounded-2xl transition duration-300 ease-out border
-  text-white font-semibold relative mr-2;
+  text-white font-semibold relative mr-2 max-h-[450px];
     &:hover {
         @apply border-[#e58e27];
         &:before {

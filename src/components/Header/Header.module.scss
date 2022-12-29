@@ -1,5 +1,5 @@
 header {
-    @apply fixed z-20 left-0 top-0 w-full;
+    @apply fixed z-50 left-0 top-0 w-full;
     &:before {
         @apply h-full w-full absolute -z-10 opacity-50 transition-all transition;
         content: '';

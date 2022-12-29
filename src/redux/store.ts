@@ -11,12 +11,12 @@ import {
     REHYDRATE,
 } from 'redux-persist'
 import authReducer from './reducers/AuthReducer'
-import userReducer from './reducers/UserReducer'
 import cartReducer from './reducers/CartReducer'
 import favouriteReducer from './reducers/FavouriteReducer'
 import { productsApi } from './api/productsAPI/products.api'
 import { orderApi } from './api/orderAPI/order.api'
 import { authApi } from './api/authAPI/auth.api'
+import { userApi } from './api/userAPI/user.api'
 
 const rootPersistConfig = {
     key: 'root',
@@ -28,8 +28,8 @@ const rootReducer = combineReducers({
     [productsApi.reducerPath]: productsApi.reducer,
     [orderApi.reducerPath]: orderApi.reducer,
     [authApi.reducerPath]: authApi.reducer,
+    [userApi.reducerPath]: userApi.reducer,
     auth: authReducer,
-    user: userReducer,
     cart: cartReducer,
     favourite: favouriteReducer,
 })
@@ -43,7 +43,12 @@ const store = configureStore({
             serializableCheck: {
                 ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
             },
-        }).concat(productsApi.middleware, orderApi.middleware, authApi.middleware),
+        }).concat(
+            productsApi.middleware,
+            orderApi.middleware,
+            authApi.middleware,
+            userApi.middleware
+        ),
 })
 
 const persister = persistStore(store)

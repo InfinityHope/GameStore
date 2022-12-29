@@ -1,0 +1,20 @@
+.Checkbox {
+    @apply cursor-pointer flex items-center text-sm text-white mb-0;
+    input {
+        @apply hidden;
+        &:checked ~ span:before {
+            @apply bg-[#fbbb43];
+            left: calc(100% - (8px + 4px));
+        }
+    }
+    span {
+        @apply inline-block w-[32px] h-[16px] border border-white/50 rounded-xl relative mr-[11px];
+        &:before {
+            @apply content-[''] w-[8px] left-[4px] block absolute top-1/2 -translate-y-1/2 bg-white/50 rounded-xl transition transition-all duration-200;
+            height: calc(100% - 6px);
+        }
+    }
+    b {
+        @apply whitespace-nowrap text-ellipsis overflow-hidden w-full;
+    }
+}

@@ -3,9 +3,9 @@ import { FC, useContext, useEffect, useRef } from 'react'
 //Стили
 import styles from './Sidebar.module.scss'
 //Контекст
-import { SidebarContext } from '../../context/SidebarContext/SidebarContext'
+import { SidebarContext } from '@/context/SidebarContext/SidebarContext'
 //Компоненты
-import { AuthForm, Tabs } from '../'
+import { AuthForm, Tabs } from '@/components'
 
 const Sidebar: FC = () => {
     const { activeSidebar, showSidebar } = useContext(SidebarContext)
@@ -15,9 +15,7 @@ const Sidebar: FC = () => {
         const target = event.target as HTMLDivElement
 
         if (target.contains(sidebarRef.current) && target !== sidebarRef.current && activeSidebar) {
-            if (showSidebar) {
-                showSidebar()
-            }
+            showSidebar()
         }
     }
 

@@ -1,7 +1,8 @@
 import { FC } from 'react'
 import styles from './CartItem.module.scss'
 import { NavLink } from 'react-router-dom'
-import { useActions } from '../../hooks/useActions'
+import { useActions } from '@/hooks/useActions'
+import { transformString } from '@/utils/transformString'
 
 interface IProps {
     productId: string
@@ -24,7 +25,11 @@ const CartItem: FC<IProps> = ({
 
     return (
         <div className={styles.CartItem}>
-            <NavLink to={`/catalog/${productId}`} className={styles.CartItemImg}>
+            <NavLink
+                to={`/catalog/${transformString(title)}`}
+                className={styles.CartItemImg}
+                state={{ id: productId }}
+            >
                 <img src={img} alt="cart-item-img" />
             </NavLink>
             <div className={styles.CartItemContent}>
