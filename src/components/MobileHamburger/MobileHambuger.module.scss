@@ -1,0 +1,8 @@
+.MobileHamburger {
+    @apply hidden;
+}
+@media (max-width: 995px) {
+    .MobileHamburger {
+        @apply block ml-4;
+    }
+}

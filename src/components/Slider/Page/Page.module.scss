@@ -40,3 +40,36 @@
         @apply w-full object-cover relative max-h-[800px] brightness-[70%];
     }
 }
+
+@media (max-width: 1240px) {
+    .Single {
+        > article {
+            @apply block w-1/2 text-3xl;
+            > div {
+                span {
+                    @apply ml-12 text-lg;
+                }
+                button {
+                    @apply text-lg w-1/6;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 600px) {
+    .Single {
+        > article {
+            @apply text-xl pl-12 bottom-1/3;
+            > div {
+                @apply mt-4;
+                span {
+                    @apply ml-12 text-lg;
+                }
+                button {
+                    @apply text-sm w-1/4 p-2;
+                }
+            }
+        }
+    }
+}

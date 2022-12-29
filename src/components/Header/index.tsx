@@ -8,7 +8,7 @@ import { useAppSelector } from '@/hooks/useAppSelector'
 import { SidebarContext } from '@/context/SidebarContext/SidebarContext'
 //Компоненты
 import { NavLink } from 'react-router-dom'
-import { Navbar, SearchInput } from '@/components'
+import { MobileHamburger, Navbar, SearchInput } from '@/components'
 import { Button } from '@/components/UI'
 
 const Header: FC = () => {
@@ -89,6 +89,7 @@ const Header: FC = () => {
                         </Button>
                     )}
                 </div>
+                <MobileHamburger />
             </div>
         </header>
     )

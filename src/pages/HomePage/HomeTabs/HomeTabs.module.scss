@@ -1,5 +1,5 @@
 .HomeTabs {
-    @apply flex text-2xl text-white justify-center pb-12 overflow-x-auto;
+    @apply flex text-2xl text-white justify-center;
     > li {
         @apply p-2 text-white text-center w-1/6 cursor-pointer mr-2;
     }
@@ -7,6 +7,27 @@
         @apply border-2 border-[#e27e58] rounded-2xl;
     }
     &Content {
-        @apply bg-transparent overflow-x-auto;
+        @apply bg-transparent mt-12 pt-12 grid grid-cols-5 gap-y-10 items-center w-full;
+    }
+}
+
+@media (max-width: 1360px) {
+    .HomeTabs {
+        @apply w-full flex justify-center  overflow-x-scroll;
+        > li {
+            @apply mr-2 w-1/2;
+        }
+        &Content {
+            @apply overflow-x-auto w-full flex justify-between;
+        }
+    }
+}
+
+@media (max-width: 435px) {
+    .HomeTabs {
+        @apply flex-wrap;
+        > li {
+            @apply mt-2 w-full;
+        }
     }
 }

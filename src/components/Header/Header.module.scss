@@ -27,3 +27,14 @@ header {
         }
     }
 }
+
+@media (max-width: 995px) {
+    header {
+        .wrapper {
+            @apply px-2;
+            .buttons {
+                @apply hidden;
+            }
+        }
+    }
+}

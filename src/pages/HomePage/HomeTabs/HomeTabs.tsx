@@ -29,27 +29,11 @@ const HomeTabs: FC = () => {
                 tabs={[
                     {
                         name: 'Новинки',
-                        content: (
-                            <div
-                                className={
-                                    'grid grid-cols-5 gap-y-10 items-center overflow-x-auto w-full'
-                                }
-                            >
-                                {renderContent(productsByReleaseDate)}
-                            </div>
-                        ),
+                        content: renderContent(productsByReleaseDate),
                     },
                     {
                         name: 'Лидеры продаж',
-                        content: (
-                            <div
-                                className={
-                                    'grid grid-cols-5 gap-y-10 items-center overflow-x-auto w-full'
-                                }
-                            >
-                                {renderContent(productsBySales)}
-                            </div>
-                        ),
+                        content: renderContent(productsBySales),
                     },
                 ]}
             />

@@ -14,3 +14,18 @@
         background: url('../../assets/icons/search.svg') no-repeat;
     }
 }
+
+@media (max-width: 995px) {
+    .Search {
+        @apply w-full;
+    }
+}
+
+@media (max-width: 505px) {
+    .Search {
+        @apply w-full;
+        > input {
+            @apply py-[2px];
+        }
+    }
+}
