@@ -28,7 +28,7 @@ const CartItem: FC<IProps> = ({
             <NavLink
                 to={`/catalog/${transformString(title)}`}
                 className={styles.CartItemImg}
-                state={{ id: productId }}
+                state={productId}
             >
                 <img src={img} alt="cart-item-img" />
             </NavLink>
