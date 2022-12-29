@@ -60,8 +60,8 @@ const CatalogPage = () => {
         setDevelopers([])
         setGenres([])
         setSortType({
-            label: '',
-            value: '',
+            label: 'По убыванию цены',
+            value: 'priceDesc',
         })
     }
 
