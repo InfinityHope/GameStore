@@ -14,7 +14,7 @@
         }
     }
     h3 {
-        @apply py-4 px-2;
+        @apply py-4 px-2 whitespace-nowrap text-ellipsis overflow-hidden;
     }
     > span {
         @apply text-[#515153] py-4 px-2;
