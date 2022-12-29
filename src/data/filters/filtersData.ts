@@ -1,4 +1,15 @@
-export const genresData = ['RPG', 'Action', 'Adventure', 'FPS', 'Survival', 'Horror']
+export const genresData = [
+    'RPG',
+    'Action',
+    'Adventure',
+    'FPS',
+    'Survival',
+    'Horror',
+    'Puzzle',
+    'Indie',
+    'Platformer',
+    'Simulator',
+]
 
 export const publishersData = [
     'Sony Interactive Entertainment',
@@ -6,6 +17,14 @@ export const publishersData = [
     'Annapurna Interactive, Iam8bit Inc.',
     'Activision',
     'CAPCOM Co., Ltd',
+    'Io-Interactive A/S',
+    'PlayStation PC LLC',
+    'FromSoftware, Inc',
+    'BANDAI NAMCO',
+    'Ubisoft',
+    'Radical Entertainment',
+    'Capcom',
+    'Warhorse Studios',
 ]
 
 export const developersData = [
@@ -14,4 +33,13 @@ export const developersData = [
     'Insomniac Games',
     'BlueTwelve Studio',
     'Infinity Ward',
+    'Io-Interactive A/S',
+    'Santa Monica Studio',
+    'FromSoftware',
+    'Bend Studio',
+    'Ubisoft Montreal',
+    'Radical Entertainment',
+    'CyberConnect2',
+    'QLOC',
+    'Warhorse Studios',
 ]
