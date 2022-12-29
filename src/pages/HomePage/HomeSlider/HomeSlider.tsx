@@ -5,9 +5,11 @@ import { Button } from '@/components/UI'
 import { transformString } from '@/utils/transformString'
 import { useGetSliderProductsQuery } from '@/reduxApi/productsAPI/products.api'
 import { useActions } from '@/hooks/useActions'
+import { useAppSelector } from '@/hooks/useAppSelector'
 
 const HomeSlider = () => {
     const { data, isLoading } = useGetSliderProductsQuery(null)
+    const cartItems = useAppSelector((state) => state.cart.cartItems)
     const { addCartItem } = useActions()
 
     if (isLoading) {
@@ -17,6 +19,7 @@ const HomeSlider = () => {
     const renderSlides = () => {
         return data?.map((product) => {
             const { _id, img, title, price, serviceActivation, regionActivation } = product
+            const existInCart = cartItems.find((cartItem) => cartItem.productId === _id)
             return (
                 <Slider.Page key={product._id}>
                     <div>
@@ -42,7 +45,7 @@ const HomeSlider = () => {
                                     })
                                 }
                             >
-                                В корзину
+                                {existInCart ? 'Добавлено' : 'В корзину'}
                             </Button>
                             <span>{product.price} ₽</span>
                         </div>

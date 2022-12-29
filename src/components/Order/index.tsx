@@ -58,7 +58,7 @@ const Order: FC<IProps> = ({ date, price, img, licenseKey, productId, title }) =
             <span>{price} ₽</span>
             <NavLink
                 to={`/catalog/${transformString(title)}`}
-                state={{ id: productId }}
+                state={productId}
                 className={styles.OrderImg}
             >
                 <img src={img} alt="product-img" />
