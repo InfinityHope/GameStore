@@ -60,13 +60,13 @@ const SearchOverlay = () => {
                                         {debouncedValue !== '' ? (
                                             <Button
                                                 onClick={() =>
-                                                    redirectToPage('search', debouncedValue)
+                                                    redirectToPage('/search', debouncedValue)
                                                 }
                                             >
                                                 Посмотреть все
                                             </Button>
                                         ) : (
-                                            <Button onClick={() => redirectToPage('catalog')}>
+                                            <Button onClick={() => redirectToPage('/catalog')}>
                                                 Посмотреть все
                                             </Button>
                                         )}
