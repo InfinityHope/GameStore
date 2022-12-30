@@ -118,6 +118,8 @@ const SinglePage = () => {
                                                     price: product.price,
                                                     title: product.title,
                                                     img: product.img,
+                                                    regionActivation: product.regionActivation,
+                                                    serviceActivation: product.serviceActivation,
                                                 })
                                             }
                                         >

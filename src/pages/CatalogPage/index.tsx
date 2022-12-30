@@ -96,6 +96,7 @@ const CatalogPage = () => {
                                 {genresData.map((genre) => (
                                     <Dropdown.Item key={genre}>
                                         <Checkbox
+                                            checked={genres.includes(genre)}
                                             value={genre}
                                             name={genre}
                                             onChange={changeGenres}
@@ -118,6 +119,7 @@ const CatalogPage = () => {
                                 {developersData.map((developer) => (
                                     <Dropdown.Item key={developer}>
                                         <Checkbox
+                                            checked={developers.includes(developer)}
                                             value={developer}
                                             name={developer}
                                             onChange={changeDevelopers}
@@ -129,6 +131,7 @@ const CatalogPage = () => {
                                 {publishersData.map((publisher) => (
                                     <Dropdown.Item key={publisher}>
                                         <Checkbox
+                                            checked={publishers.includes(publisher)}
                                             value={publisher}
                                             name={publisher}
                                             onChange={changePublishers}
