@@ -14,6 +14,8 @@ import { Button } from '@/components/UI'
 const Header: FC = () => {
     const { authData } = useAppSelector((state) => state.auth)
     const { showSidebar } = useContext(SidebarContext)
+    const { cartItems } = useAppSelector((state) => state.cart)
+    const { favourites } = useAppSelector((state) => state.favourite)
 
     return (
         <header id={'header'}>
@@ -34,6 +36,15 @@ const Header: FC = () => {
                                 fill="#FFFFFF"
                             />
                         </svg>
+                        {favourites.length > 0 ? (
+                            <div
+                                className={
+                                    'w-[10px] h-[10px] rounded-full bg-[#e58e27] absolute right-[-5px] top-[-2px]'
+                                }
+                            ></div>
+                        ) : (
+                            ''
+                        )}
                     </NavLink>
                     <NavLink to={'/cart'}>
                         <svg
@@ -65,6 +76,15 @@ const Header: FC = () => {
                                 strokeLinejoin="round"
                             />
                         </svg>
+                        {cartItems.length > 0 ? (
+                            <div
+                                className={
+                                    'w-[10px] h-[10px] rounded-full bg-[#e58e27] absolute right-[-5px] top-0'
+                                }
+                            ></div>
+                        ) : (
+                            ''
+                        )}
                     </NavLink>
                     {authData.token ? (
                         <button>

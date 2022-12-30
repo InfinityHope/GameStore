@@ -19,7 +19,7 @@ header {
             @apply flex justify-end items-center w-1/4;
             a,
             button {
-                @apply mr-12;
+                @apply mr-12 relative;
                 &:last-child {
                     @apply mr-0 w-max;
                 }
