@@ -13,4 +13,7 @@
             @apply text-sm leading-8 tracking-wider uppercase text-white absolute left-0 bottom-1 mb-0 transition-all duration-300 pointer-events-none;
         }
     }
+    svg {
+        @apply absolute bottom-2 right-0;
+    }
 }

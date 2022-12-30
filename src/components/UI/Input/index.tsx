@@ -1,11 +1,12 @@
 //Библиотеки
-import { FC } from 'react'
+import { FC, useState } from 'react'
 //Стили
 import styles from './Input.module.scss'
 //Типы
 import { FieldError, Path, UseFormRegister } from 'react-hook-form'
 import { IFormValues } from '../../AuthForm/AuthForm.types'
 import { IProfileValues } from '../../../pages/ProfilePage/DataView/Profile.types'
+import { AiFillEye, AiTwotoneEyeInvisible } from 'react-icons/all'
 
 //Компоненты
 
@@ -30,12 +31,22 @@ interface IProps {
 }
 
 const Input: FC<IProps> = (props) => {
+    const [passType, setPassType] = useState('password')
+
+    const changeType = () => {
+        if (passType === 'password') {
+            setPassType('text')
+        } else {
+            setPassType('password')
+        }
+    }
+
     return (
         <div className={styles.WrapperInput}>
             <div className={styles.Input}>
                 <input
                     placeholder={' '}
-                    type={props.type}
+                    type={props.type === 'password' ? passType : props.type}
                     id={props.id}
                     autoComplete={props.autocomplete}
                     {...props.register(props.label, {
@@ -52,6 +63,20 @@ const Input: FC<IProps> = (props) => {
                 />
                 <label htmlFor={props.id}>{props.labelText}</label>
             </div>
+            {props.type === 'password' ? (
+                passType === 'password' ? (
+                    <AiFillEye size={30} cursor={'pointer'} color={'white'} onClick={changeType} />
+                ) : (
+                    <AiTwotoneEyeInvisible
+                        size={30}
+                        cursor={'pointer'}
+                        color={'white'}
+                        onClick={changeType}
+                    />
+                )
+            ) : (
+                ''
+            )}
             {props.error?.message && (
                 <div className={'flex text-red-500'}>
                     {props.error?.message || props.pattern?.message}
