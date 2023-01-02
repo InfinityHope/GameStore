@@ -44,3 +44,9 @@
         }
     }
 }
+
+@media (max-width: 550px) {
+    .breadcrumbs {
+        flex-wrap: wrap;
+    }
+}

@@ -78,14 +78,118 @@
         &Content {
             @apply w-full;
             .ScreenShots {
-                @apply mt-96;
+                @apply mt-12 w-full h-full;
                 h3 {
                     @apply text-[#e27e58] text-2xl mb-10 font-bold mt-48;
                 }
-                @apply w-full h-full mt-24;
-
                 img {
                     @apply rounded-2xl;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 1740px) {
+    .pageWrapper {
+        &Left {
+            > img {
+                @apply w-[400px] h-[500px];
+            }
+        }
+    }
+}
+
+@media (max-width: 1550px) {
+    .pageWrapper {
+        &Left {
+            @apply pr-6;
+        }
+        &Right {
+            @apply w-2/3;
+            &Header {
+                h2 {
+                    @apply text-3xl;
+                }
+            }
+            &Body {
+                @apply text-lg;
+                .price {
+                    button {
+                        @apply w-1/4 text-sm;
+                    }
+                    span {
+                        @apply text-lg;
+                    }
+                }
+                .SubInfo {
+                    @apply text-sm;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 1150px) {
+    .pageWrapper {
+        @apply items-center;
+        &Left {
+            @apply w-full pr-0;
+            img {
+                @apply w-full h-full;
+            }
+            ul {
+                li {
+                    p {
+                        @apply w-2/4;
+                    }
+                }
+            }
+        }
+        &Right {
+            @apply w-full;
+            &Header {
+                @apply w-full mt-12;
+                h2 {
+                    @apply text-3xl;
+                }
+            }
+            &Body {
+                @apply text-lg;
+                .price {
+                    @apply w-full;
+                    button {
+                        @apply w-2/4 text-sm;
+                    }
+                    span {
+                        @apply text-lg w-1/4;
+                    }
+                }
+                .SubInfo {
+                    @apply text-sm w-full;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 620px) {
+    .pageWrapper {
+        @apply pr-4 pl-4 pb-12;
+        &Right {
+            @apply w-full;
+            &Header {
+                @apply w-full mt-12;
+                h2 {
+                    @apply text-2xl;
+                }
+            }
+            &Body {
+                .SubInfo {
+                    @apply text-sm w-full flex-wrap;
+                    > li {
+                        @apply mt-6;
+                    }
                 }
             }
         }

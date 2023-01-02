@@ -37,3 +37,26 @@
         }
     }
 }
+
+@media (max-width: 1140px) {
+    .slider {
+        .Multiple {
+            @apply w-1/6;
+        }
+    }
+}
+@media (max-width: 670px) {
+    .slider {
+        .Multiple {
+            @apply w-1/4;
+        }
+    }
+}
+
+@media (max-width: 350px) {
+    .slider {
+        .Multiple {
+            @apply w-2/6;
+        }
+    }
+}

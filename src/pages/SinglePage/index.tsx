@@ -11,19 +11,26 @@ import { Breadcrumbs, Slider, Spinner, Tabs } from '@/components'
 import DescriptionView from './DescriptionView'
 import RequirementsView from './RequirementsView'
 import { Button } from '@/components/UI'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 
 const SinglePage = () => {
     const location = useLocation()
     const navigate = useNavigate()
     const { data: product, isLoading } = useGetProductQuery(location.state)
     const { addFavourite, addCartItem } = useActions()
+    const [screenToShow, setScreenToShow] = useState(2)
 
     useEffect(() => {
         if (!location.state) {
             navigate('/not-found')
         }
     }, [location.state])
+
+    useEffect(() => {
+        if (window.screen.width <= 500) {
+            setScreenToShow(1)
+        }
+    }, [window])
 
     const inCart = useExistInCart(location.state)
     const inFavourites = useExistInFavourites(location.state)
@@ -150,7 +157,7 @@ const SinglePage = () => {
                                     <div className={styles.ScreenShots}>
                                         <h3>Скриншоты</h3>
                                         <Slider
-                                            slidesToShow={2}
+                                            slidesToShow={screenToShow}
                                             type={'Multiple'}
                                             slideOffset={45}
                                             disableLastBtn
@@ -163,6 +170,7 @@ const SinglePage = () => {
                                         </Slider>
                                     </div>
                                     <Tabs
+                                        contentTabClass={styles.pageTabsContent}
                                         tabs={[
                                             {
                                                 name: 'Описание',

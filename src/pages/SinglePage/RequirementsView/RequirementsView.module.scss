@@ -4,3 +4,19 @@
         @apply flex justify-between items-center pr-[5px] pt-6;
     }
 }
+
+@media (max-width: 765px) {
+    .Requirements {
+        h2 {
+            @apply text-xl;
+        }
+    }
+}
+
+@media (max-width: 480px) {
+    .Requirements {
+        h2 {
+            @apply text-lg;
+        }
+    }
+}

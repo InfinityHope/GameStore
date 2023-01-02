@@ -7,3 +7,25 @@
         @apply pt-6 w-full h-full text-xl text-justify whitespace-normal leading-relaxed;
     }
 }
+
+@media (max-width: 870px) {
+    .Description {
+        > h2 {
+            @apply text-xl;
+        }
+        > p {
+            @apply text-lg;
+        }
+    }
+}
+
+@media (max-width: 500px) {
+    .Description {
+        > h2 {
+            @apply text-[1rem];
+        }
+        > p {
+            @apply text-sm;
+        }
+    }
+}

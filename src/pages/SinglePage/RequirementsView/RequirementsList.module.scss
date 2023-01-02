@@ -10,3 +10,32 @@
         }
     }
 }
+
+@media (max-width: 870px) {
+    .RequirementsList {
+        > li {
+            > p {
+                @apply w-1/2;
+            }
+        }
+    }
+}
+
+@media (max-width: 765px) {
+    .RequirementsList {
+        > li {
+            @apply text-lg;
+        }
+    }
+}
+
+@media (max-width: 765px) {
+    .RequirementsList {
+        > li {
+            @apply text-sm;
+            > p {
+                @apply mr-2;
+            }
+        }
+    }
+}
