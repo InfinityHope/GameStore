@@ -20,22 +20,25 @@ const SearchOverlay = () => {
         limit: 12,
     })
 
-    const redirectToPage = (path: string, state?: string) => {
+    const closeOverlay = () => {
         document.body.style.overflow = 'auto'
         showOverlay(false)
+    }
+
+    const redirectToPage = (path: string, state?: string) => {
+        closeOverlay()
         navigate(path, { state: state ? state : null })
     }
 
     useEffect(() => {
         if (location.pathname.includes('/')) {
-            showOverlay(false)
+            closeOverlay()
         }
     }, [location.pathname])
 
     useEffect(() => {
         if (checkOutside) {
-            document.body.style.overflow = 'auto'
-            showOverlay(false)
+            closeOverlay()
         }
         return () => {
             showOverlay(false)
@@ -51,7 +54,7 @@ const SearchOverlay = () => {
                             <h3>
                                 Результаты поиска: <span>{data.products.length}</span>
                             </h3>
-                            <button onClick={() => showOverlay(false)}>&#10006;</button>
+                            <button onClick={() => closeOverlay()}>&#10006;</button>
                         </div>
                         <div className={styles.SearchOverlayContent}>
                             {data.products.map((product) => (
