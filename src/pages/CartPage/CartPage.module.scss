@@ -13,13 +13,13 @@
     .CartContainer {
         @apply flex mt-12 justify-between;
         .CartItems {
+            @apply w-3/5;
             h2 {
                 @apply text-white text-5xl mb-12;
             }
-            @apply w-3/5;
         }
         .CartTotal {
-            @apply p-6 mb-2 bg-black border border-white/50 rounded-xl sticky text-white text-3xl w-1/4 h-full;
+            @apply p-6 mb-2 bg-black border border-white/50 rounded-xl sticky text-white text-3xl w-1/5 h-full;
             > div {
                 @apply flex justify-between mb-10;
                 span:last-child {
@@ -31,6 +31,44 @@
             }
             button {
                 @apply mt-4 text-xl;
+            }
+        }
+    }
+}
+
+@media (max-width: 1400px) {
+    .CartPage {
+        .CartContainer {
+            .CartItems {
+                @apply mr-12;
+            }
+            .CartTotal {
+                @apply w-2/5;
+            }
+        }
+    }
+}
+
+@media (max-width: 1000px) {
+    .CartPage {
+        @apply p-4;
+        .CartContainer {
+            @apply flex-wrap;
+            .CartItems {
+                @apply mr-0 w-full;
+            }
+            .CartTotal {
+                @apply w-1/2 mt-24;
+            }
+        }
+    }
+}
+
+@media (max-width: 570px) {
+    .CartPage {
+        .CartContainer {
+            .CartTotal {
+                @apply w-full;
             }
         }
     }

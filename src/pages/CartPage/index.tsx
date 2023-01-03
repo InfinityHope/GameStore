@@ -22,16 +22,12 @@ const CartPage = () => {
     const { showSidebar } = useContext(SidebarContext)
 
     const createOrderHandler = async () => {
-        try {
-            if (!token) {
-                showSidebar()
-            }
-            const userId = user._id
-            await createOrder({ cartItems, userId }).unwrap()
-            clearCart()
-        } catch (e) {
-            console.log(e)
+        if (!token) {
+            showSidebar()
         }
+        const userId = user._id
+        await createOrder({ cartItems, userId }).unwrap()
+        clearCart()
     }
 
     return (
