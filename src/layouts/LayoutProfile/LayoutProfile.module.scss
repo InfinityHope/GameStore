@@ -4,3 +4,11 @@
         @apply flex justify-between mt-24;
     }
 }
+
+@media (max-width: 1225px) {
+    .LayoutProfile {
+        .LayoutContainer {
+            @apply flex-col;
+        }
+    }
+}

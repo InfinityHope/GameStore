@@ -10,3 +10,15 @@
         }
     }
 }
+
+@media (max-width: 1225px) {
+    .SideMenu {
+        @apply min-w-full flex-row overflow-x-scroll mb-12;
+        > li {
+            @apply my-4 min-w-fit;
+            a {
+                @apply text-xl w-max;
+            }
+        }
+    }
+}

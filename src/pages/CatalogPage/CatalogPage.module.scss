@@ -34,20 +34,20 @@
     }
 }
 
-@media (max-width: 800px) {
-    .Catalog {
-        &Cards {
-            @apply flex justify-center items-center flex-wrap;
-        }
-    }
-}
-
 @media (max-width: 1315px) {
     .Catalog {
         &Filters {
             &Buttons {
                 @apply w-3/6;
             }
+        }
+    }
+}
+
+@media (max-width: 800px) {
+    .Catalog {
+        &Cards {
+            @apply flex justify-center items-center flex-wrap;
         }
     }
 }

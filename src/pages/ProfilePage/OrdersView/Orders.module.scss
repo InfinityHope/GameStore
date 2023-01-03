@@ -10,3 +10,14 @@
         }
     }
 }
+@media (max-width: 1225px) {
+    .OrdersView {
+        @apply w-full p-4;
+    }
+}
+
+@media (max-width: 815px) {
+    .OrdersView {
+        @apply text-lg;
+    }
+}

@@ -10,3 +10,15 @@
         }
     }
 }
+
+@media (max-width: 1225px) {
+    .ProfileView {
+        @apply w-full;
+    }
+}
+
+@media (max-width: 555px) {
+    .ProfileView {
+        @apply px-6 py-12;
+    }
+}

@@ -10,3 +10,18 @@
         }
     }
 }
+
+@media (max-width: 1225px) {
+    .DataView {
+        @apply w-full p-4;
+    }
+}
+@media (max-width: 545px) {
+    .DataView {
+        form {
+            button {
+                @apply w-1/2;
+            }
+        }
+    }
+}

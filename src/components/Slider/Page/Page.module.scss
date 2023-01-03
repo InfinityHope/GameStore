@@ -73,3 +73,9 @@
         }
     }
 }
+
+@media (max-width: 535px) {
+    .Multiple {
+        @apply justify-center flex;
+    }
+}

@@ -26,3 +26,37 @@
 .Copy {
     @apply text-orange-400;
 }
+
+@media (max-width: 815px) {
+    .Order {
+        ul {
+            li {
+                @apply text-lg;
+            }
+        }
+        span {
+            @apply text-lg;
+        }
+    }
+}
+
+@media (max-width: 760px) {
+    .Order {
+        @apply flex-col-reverse;
+        &Img {
+            @apply w-48 h-48;
+            > img {
+                @apply w-32 h-48 mx-auto my-0;
+            }
+        }
+        ul {
+            @apply w-full;
+            li {
+                @apply justify-center mx-auto text-center;
+            }
+        }
+        span {
+            @apply flex justify-center w-full;
+        }
+    }
+}

@@ -47,9 +47,12 @@ const SearchOverlay = () => {
             {activeOverlay ? (
                 data && !isLoading ? (
                     <div className={styles.SearchOverlay} ref={overlayRef}>
-                        <h3 className={styles.SearchOverlayTitle}>
-                            Результаты поиска: <span>{data.products.length}</span>
-                        </h3>
+                        <div className={styles.SearchOverlayTitle}>
+                            <h3>
+                                Результаты поиска: <span>{data.products.length}</span>
+                            </h3>
+                            <button onClick={() => showOverlay(false)}>&#10006;</button>
+                        </div>
                         <div className={styles.SearchOverlayContent}>
                             {data.products.map((product) => (
                                 <Card {...product} key={product._id} />

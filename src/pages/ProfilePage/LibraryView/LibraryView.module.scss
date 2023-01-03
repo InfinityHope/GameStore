@@ -4,3 +4,9 @@
         @apply text-white font-bold flex justify-center text-4xl;
     }
 }
+
+@media (max-width: 1225px) {
+    .LibraryView {
+        @apply w-full p-4;
+    }
+}

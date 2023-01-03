@@ -1,0 +1,35 @@
+.SearchPage {
+    &Title {
+        @apply mt-12 text-white text-4xl;
+        > span {
+            @apply text-[#e58e27];
+        }
+    }
+    &Cards {
+        @apply grid gap-y-6 grid-columns-5 pt-16;
+    }
+}
+
+@media (max-width: 810px) {
+    .SearchPage {
+        &Cards {
+            @apply flex justify-center items-center flex-wrap;
+        }
+    }
+}
+
+@media (max-width: 560px) {
+    .SearchPage {
+        &Title {
+            @apply text-2xl text-center;
+        }
+    }
+}
+
+@media (max-width: 360px) {
+    .SearchPage {
+        &Title {
+            @apply text-xl;
+        }
+    }
+}

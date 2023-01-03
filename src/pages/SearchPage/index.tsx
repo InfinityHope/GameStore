@@ -3,6 +3,7 @@ import { useLocation, useNavigate } from 'react-router'
 import { Breadcrumbs, Card, Spinner } from '@/components'
 import { useGetAllProductsQuery } from '@/reduxApi/productsAPI/products.api'
 import ReactPaginate from 'react-paginate'
+import styles from './SearchPage.module.scss'
 
 const SearchPage = () => {
     const location = useLocation()
@@ -23,7 +24,7 @@ const SearchPage = () => {
     }, [location.state])
 
     return (
-        <div>
+        <div className={styles.SearchPage}>
             <Breadcrumbs
                 breadcrumbs={[
                     {
@@ -39,11 +40,10 @@ const SearchPage = () => {
             <div className="container">
                 {data ? (
                     <>
-                        <h2 className={'mt-12 text-white text-4xl'}>
-                            Результаты поиска по запросу:{' '}
-                            <span className={'text-[#e58e27]'}>{location.state}</span>
+                        <h2 className={styles.SearchPageTitle}>
+                            Результаты поиска по запросу: <span>{location.state}</span>
                         </h2>
-                        <div className={'grid gap-y-6 grid-columns-5 pt-16'}>
+                        <div className={styles.SearchPageCards}>
                             {isLoading ? (
                                 <Spinner />
                             ) : (

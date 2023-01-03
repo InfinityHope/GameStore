@@ -6,10 +6,24 @@ import { useOutletContext } from 'react-router'
 import LayoutProfile from '@/layouts/LayoutProfile'
 import { Card, Slider, Spinner } from '@/components'
 import { useGetUserLibraryQuery } from '@/redux/api/userAPI/user.api'
+import { useEffect, useState } from 'react'
 
 const LibraryView = () => {
     const _id: string = useOutletContext()
     const { data: userLibrary, isLoading } = useGetUserLibraryQuery(_id)
+    const [slidesShow, setSlidesShow] = useState(4)
+
+    useEffect(() => {
+        if (window.screen.width <= 1310) {
+            setSlidesShow(3)
+        }
+        if (window.screen.width <= 990) {
+            setSlidesShow(2)
+        }
+        if (window.screen.width <= 535) {
+            setSlidesShow(1)
+        }
+    }, [window])
 
     return (
         <LayoutProfile label={'Библиотека'} link={'/profile/library'} _id={_id}>
@@ -21,7 +35,7 @@ const LibraryView = () => {
                         (userLibrary.length === 0 ? (
                             <h3>Ваша библиотека пуста :c</h3>
                         ) : userLibrary.length > 4 ? (
-                            <Slider slidesToShow={4} type={'Multiple'} disableLastBtn>
+                            <Slider slidesToShow={slidesShow} type={'Multiple'} disableLastBtn>
                                 {userLibrary.map((product) => (
                                     <Slider.Page key={product.productId}>
                                         <Card
