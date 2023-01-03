@@ -1,0 +1,33 @@
+.MobileMenu {
+    @apply bg-black/95 w-[320px] h-screen fixed top-0 right-0 z-[9999] flex flex-col items-center text-white pt-12;
+    > button {
+        @apply text-white text-4xl;
+    }
+    &AuthForm {
+        @apply p-0;
+    }
+    &Container {
+        @apply flex flex-col w-full items-center mt-6;
+        > button {
+            @apply text-xl text-center mb-12;
+        }
+        ul {
+            @apply flex flex-col items-center text-2xl;
+            > li {
+                @apply mb-6;
+            }
+        }
+    }
+    &Tabs {
+        @apply flex justify-center border-b border-b-white/30 -mb-[1px] px-2;
+
+        > li {
+            @apply px-3 py-2 text-white text-center w-3/4 cursor-pointer relative outline-0;
+        }
+
+        .activeTab {
+            @apply text-white rounded-tl-2xl rounded-tr-2xl before:content-[''] before:w-full before:h-full before:top-[1px] before:left-0
+            before:-bottom-[1px] before:border before:border-white/50 before:border-b-black/90 before:absolute before:rounded-t-xl;
+        }
+    }
+}

@@ -10,10 +10,12 @@ import { SidebarContext } from '@/context/SidebarContext/SidebarContext'
 import { NavLink } from 'react-router-dom'
 import { MobileHamburger, Navbar, SearchInput } from '@/components'
 import { Button } from '@/components/UI'
+import { MobileMenuContext } from '@/context/MobileMenuContext/MobileMenuContext'
 
 const Header: FC = () => {
     const { authData } = useAppSelector((state) => state.auth)
     const { showSidebar } = useContext(SidebarContext)
+    const { showMobileMenu } = useContext(MobileMenuContext)
     const { cartItems } = useAppSelector((state) => state.cart)
     const { favourites } = useAppSelector((state) => state.favourite)
 
@@ -104,12 +106,12 @@ const Header: FC = () => {
                             </NavLink>
                         </button>
                     ) : (
-                        <Button type={'Header'} onClick={showSidebar}>
+                        <Button type={'Header'} onClick={() => showSidebar(true)}>
                             Войти
                         </Button>
                     )}
                 </div>
-                <MobileHamburger />
+                <MobileHamburger onClick={() => showMobileMenu(true)} />
             </div>
         </header>
     )

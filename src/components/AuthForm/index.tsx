@@ -12,9 +12,11 @@ import { SidebarContext } from '@/context/SidebarContext/SidebarContext'
 //Компоненты
 import { Button, Input } from '@/components/UI'
 import { useLoginUserMutation, useRegisterUserMutation } from '@/reduxApi/authAPI/auth.api'
+import { MobileMenuContext } from '@/context/MobileMenuContext/MobileMenuContext'
 
 const AuthForm: FC<{ type: 'Login' | 'Register' }> = ({ type }) => {
     const { showSidebar, activeSidebar } = useContext(SidebarContext)
+    const { showMobileMenu, activeMenu } = useContext(MobileMenuContext)
     const [loginUser, { isError: isErrorLogin }] = useLoginUserMutation()
     const [registerUser, { isError: isErrorRegister }] = useRegisterUserMutation()
     const { setAuth } = useActions()
@@ -46,9 +48,8 @@ const AuthForm: FC<{ type: 'Login' | 'Register' }> = ({ type }) => {
         } catch (e) {
             console.log(isErrorLogin || isErrorRegister)
         } finally {
-            if (showSidebar) {
-                showSidebar()
-            }
+            showSidebar(false)
+            showMobileMenu(false)
         }
     }
 

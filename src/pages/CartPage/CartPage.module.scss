@@ -71,5 +71,21 @@
                 @apply w-full;
             }
         }
+        .CartEmpty {
+            @apply w-full;
+            button {
+                @apply w-1/2;
+            }
+        }
+    }
+}
+
+@media (max-width: 415px) {
+    .CartPage {
+        .CartEmpty {
+            button {
+                @apply w-full;
+            }
+        }
     }
 }

@@ -15,7 +15,7 @@ const Sidebar: FC = () => {
         const target = event.target as HTMLDivElement
 
         if (target.contains(sidebarRef.current) && target !== sidebarRef.current && activeSidebar) {
-            showSidebar()
+            showSidebar(false)
         }
     }
 

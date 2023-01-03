@@ -21,3 +21,21 @@
         }
     }
 }
+
+@media (max-width: 800px) {
+    .FavouritePage {
+        .FavouriteEmpty {
+            @apply w-full;
+        }
+    }
+}
+
+@media (max-width: 570px) {
+    .FavouritePage {
+        .FavouriteEmpty {
+            button {
+                @apply w-full;
+            }
+        }
+    }
+}
