@@ -6,16 +6,14 @@ import { useOutletContext } from 'react-router'
 import LayoutProfile from '@/layouts/LayoutProfile'
 import { Card, Slider, Spinner } from '@/components'
 import { useGetUserLibraryQuery } from '@/redux/api/userAPI/user.api'
-import { useEffect, useLayoutEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 
 const LibraryView = () => {
     const _id: string = useOutletContext()
-    const { data: userLibrary, isLoading, refetch } = useGetUserLibraryQuery(_id)
+    const { data: userLibrary, isLoading } = useGetUserLibraryQuery(_id, {
+        refetchOnMountOrArgChange: true,
+    })
     const [slidesShow, setSlidesShow] = useState(4)
-
-    useLayoutEffect(() => {
-        refetch()
-    }, [userLibrary])
 
     useEffect(() => {
         if (window.screen.width <= 1310) {

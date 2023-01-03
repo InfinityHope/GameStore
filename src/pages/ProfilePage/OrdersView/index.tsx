@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import LayoutProfile from '@/layouts/LayoutProfile'
 import { useOutletContext } from 'react-router'
 import { Order, Spinner } from '@/components'
@@ -9,11 +9,11 @@ import { useGetUserOrdersQuery } from '@/redux/api/userAPI/user.api'
 
 const OrdersView = () => {
     const _id: string = useOutletContext()
-    const { data: userOrders, isLoading, refetch } = useGetUserOrdersQuery(_id)
-
-    useEffect(() => {
-        refetch()
-    }, [userOrders])
+    const {
+        data: userOrders,
+        isLoading,
+        refetch,
+    } = useGetUserOrdersQuery(_id, { refetchOnMountOrArgChange: true })
 
     return (
         <LayoutProfile label={'Заказы'} link={'/profile/orders'} _id={_id}>
