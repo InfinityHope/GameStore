@@ -11,7 +11,7 @@ import { SidebarContext } from '@/context/SidebarContext/SidebarContext'
 import { Button } from '@/components/UI'
 import { NavLink } from 'react-router-dom'
 import { Breadcrumbs, CartItem, Spinner } from '../../components'
-import { useCreateOrderMutation } from '../../redux/api/orderAPI/order.api'
+import { useCreateOrderMutation } from '@/reduxApi/orderAPI/order.api'
 import { useActions } from '@/hooks/useActions'
 
 const CartPage = () => {
@@ -23,7 +23,7 @@ const CartPage = () => {
 
     const createOrderHandler = async () => {
         if (!token) {
-            showSidebar()
+            showSidebar(true)
         }
         const userId = user._id
         await createOrder({ cartItems, userId }).unwrap()
