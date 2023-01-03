@@ -1,5 +1,5 @@
 //Библиотеки
-import { FC } from 'react'
+import React, { FC } from 'react'
 //хуки
 import { useActions } from '@/hooks/useActions'
 import { useExistInCart } from '@/hooks/useExistInCart'
@@ -18,6 +18,7 @@ interface IProps {
     img: string
     serviceActivation?: string
     regionActivation?: string
+    availability?: boolean
     price?: number
     type?: 'Product' | 'LibraryGame'
 }
@@ -30,6 +31,7 @@ const Card: FC<IProps> = ({
     type = 'Product',
     serviceActivation,
     regionActivation,
+    availability,
 }) => {
     const { addCartItem, addFavourite } = useActions()
     const inCart = useExistInCart(_id)
@@ -48,22 +50,26 @@ const Card: FC<IProps> = ({
                     <div className={styles.CardBottom}>
                         <span>{price} ₽</span>
                     </div>
+                    {!availability ? (
+                        <Button type={'Card'}>Отсутствует</Button>
+                    ) : (
+                        <Button
+                            type={'Card'}
+                            onClick={() =>
+                                addCartItem({
+                                    productId: _id,
+                                    price,
+                                    title,
+                                    img,
+                                    serviceActivation,
+                                    regionActivation,
+                                })
+                            }
+                        >
+                            {inCart ? 'Добавлено' : 'В корзину'}
+                        </Button>
+                    )}
 
-                    <Button
-                        type={'Card'}
-                        onClick={() =>
-                            addCartItem({
-                                productId: _id,
-                                price,
-                                title,
-                                img,
-                                serviceActivation,
-                                regionActivation,
-                            })
-                        }
-                    >
-                        {inCart ? 'Добавлено' : 'В корзину'}
-                    </Button>
                     <button
                         className={
                             inFavourites

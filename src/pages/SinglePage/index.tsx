@@ -118,20 +118,23 @@ const SinglePage = () => {
                                             : 'Отсутствует в продаже'}
                                     </p>
                                     <div className={styles.price}>
-                                        <Button
-                                            onClick={() =>
-                                                addCartItem({
-                                                    productId: product._id,
-                                                    price: product.price,
-                                                    title: product.title,
-                                                    img: product.img,
-                                                    regionActivation: product.regionActivation,
-                                                    serviceActivation: product.serviceActivation,
-                                                })
-                                            }
-                                        >
-                                            {inCart ? 'Добавлено' : 'В корзину'}
-                                        </Button>
+                                        {product.availability ? (
+                                            <Button
+                                                onClick={() =>
+                                                    addCartItem({
+                                                        productId: product._id,
+                                                        price: product.price,
+                                                        title: product.title,
+                                                        img: product.img,
+                                                        regionActivation: product.regionActivation,
+                                                        serviceActivation:
+                                                            product.serviceActivation,
+                                                    })
+                                                }
+                                            >
+                                                {inCart ? 'Добавлено' : 'В корзину'}
+                                            </Button>
+                                        ) : null}
                                         <span>{product.price} ₽</span>
                                     </div>
                                     <ul className={styles.SubInfo}>

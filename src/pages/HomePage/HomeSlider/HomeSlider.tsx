@@ -30,20 +30,24 @@ const HomeSlider = () => {
                             {product.title}
                         </NavLink>
                         <div>
-                            <Button
-                                onClick={() =>
-                                    addCartItem({
-                                        productId: _id,
-                                        title,
-                                        img,
-                                        price,
-                                        regionActivation,
-                                        serviceActivation,
-                                    })
-                                }
-                            >
-                                {existInCart ? 'Добавлено' : 'В корзину'}
-                            </Button>
+                            {product.availability ? (
+                                <Button
+                                    onClick={() =>
+                                        addCartItem({
+                                            productId: _id,
+                                            title,
+                                            img,
+                                            price,
+                                            regionActivation,
+                                            serviceActivation,
+                                        })
+                                    }
+                                >
+                                    {existInCart ? 'Добавлено' : 'В корзину'}
+                                </Button>
+                            ) : (
+                                <Button>Отсутствует</Button>
+                            )}
                             <span>{product.price} ₽</span>
                         </div>
                     </article>
