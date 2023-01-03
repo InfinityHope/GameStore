@@ -59,7 +59,7 @@ const SearchOverlay = () => {
                             ))}
                             <div className={'w-full'}>
                                 {data.products.length > 10 ? (
-                                    <div className={'w-1/4'}>
+                                    <div className={styles.SearchOverlayContentButton}>
                                         {debouncedValue !== '' ? (
                                             <Button
                                                 onClick={() =>

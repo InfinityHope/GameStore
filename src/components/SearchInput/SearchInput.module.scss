@@ -10,7 +10,7 @@
         width: 100%;
     }
     > button {
-        @apply absolute right-10 w-6 h-6 bottom-1/2 block translate-y-1/2 border-0;
+        @apply absolute right-10 w-6 h-6 bottom-1/2 block translate-y-1/2 border-0 cursor-default;
         background: url('../../assets/icons/search.svg') no-repeat;
     }
 }
