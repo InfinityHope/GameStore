@@ -86,7 +86,6 @@ const CatalogPage = () => {
                     </h3>
                     <div className={styles.CatalogFilters}>
                         <div className={styles.CatalogFiltersBlock}>
-                            \
                             <Select
                                 selected={sortType}
                                 setSelected={setSortType}
@@ -115,7 +114,7 @@ const CatalogPage = () => {
                     </div>
                     {showAllFilters && (
                         <div className={styles.CatalogHiddenFilters}>
-                            <Dropdown title={'Разработчик'}>
+                            <Dropdown title={'Разработчик'} zIndex={40}>
                                 {developersData.map((developer) => (
                                     <Dropdown.Item key={developer}>
                                         <Checkbox
@@ -141,7 +140,7 @@ const CatalogPage = () => {
                             </Dropdown>
                         </div>
                     )}
-                    <div className={'grid gap-y-6 grid-columns-5 pt-16'}>
+                    <div className={styles.CatalogCards}>
                         {isLoading ? (
                             <Spinner />
                         ) : (

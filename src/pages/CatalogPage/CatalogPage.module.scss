@@ -2,7 +2,9 @@
     &Title {
         @apply text-5xl font-bold text-white py-12;
     }
-
+    &Cards {
+        @apply grid gap-y-6 grid-columns-5 pt-16;
+    }
     &Filters {
         @apply flex mt-4 justify-between;
         &Block {
@@ -27,6 +29,87 @@
             @apply mr-6;
             &:first-child {
                 @apply mr-[30px];
+            }
+        }
+    }
+}
+
+@media (max-width: 800px) {
+    .Catalog {
+        &Cards {
+            @apply flex justify-center items-center flex-wrap;
+        }
+    }
+}
+
+@media (max-width: 1315px) {
+    .Catalog {
+        &Filters {
+            &Buttons {
+                @apply w-3/6;
+            }
+        }
+    }
+}
+
+@media (max-width: 870px) {
+    .Catalog {
+        @apply p-4;
+        &Filters {
+            @apply flex flex-col-reverse;
+            &Block {
+                @apply w-full mt-6;
+            }
+            &Buttons {
+                @apply text-xs w-1/2 justify-start;
+            }
+        }
+    }
+}
+
+@media (max-width: 700px) {
+    .Catalog {
+        &Filters {
+            &Buttons {
+                @apply w-2/3;
+            }
+        }
+    }
+}
+
+@media (max-width: 540px) {
+    .Catalog {
+        &Filters {
+            &Buttons {
+                @apply w-full block;
+                > button {
+                    @apply w-full mt-4;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 500px) {
+    .Catalog {
+        &Title {
+            @apply text-3xl;
+        }
+        &Filters {
+            &Block {
+                @apply flex-wrap justify-center;
+                > div {
+                    @apply mr-0 mt-4;
+                }
+            }
+        }
+        &HiddenFilters {
+            @apply flex-wrap justify-center;
+            > div {
+                @apply mr-0 mt-4;
+                &:first-child {
+                    @apply mr-0;
+                }
             }
         }
     }

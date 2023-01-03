@@ -13,3 +13,11 @@
         @apply grid grid-columns-5 gap-y-10;
     }
 }
+
+@media (max-width: 1000px) {
+    .FavouritePage {
+        .Cards {
+            @apply flex justify-center items-center flex-wrap;
+        }
+    }
+}

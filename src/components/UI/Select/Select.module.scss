@@ -1,5 +1,5 @@
 .Select {
-    @apply w-[300px] text-white p-2 relative z-30 bg-white rounded-xl text-black;
+    @apply w-[300px] text-white p-2 relative z-[100] bg-white rounded-xl text-black;
     &Title {
         @apply p-[4px]  flex justify-between items-center cursor-pointer;
         svg {
