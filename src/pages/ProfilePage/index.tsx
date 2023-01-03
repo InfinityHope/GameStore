@@ -8,10 +8,15 @@ import { useAppSelector } from '@/hooks/useAppSelector'
 import LayoutProfile from '@/layouts/LayoutProfile'
 import { Spinner } from '@/components'
 import { useGetUserDataQuery } from '@/redux/api/userAPI/user.api'
+import { useLayoutEffect } from 'react'
 
 const ProfilePage = () => {
     const { _id } = useAppSelector((state) => state.auth.authData.user)
-    const { data: userData, isLoading } = useGetUserDataQuery(_id)
+    const { data: userData, isLoading, refetch } = useGetUserDataQuery(_id)
+
+    useLayoutEffect(() => {
+        refetch()
+    }, [userData])
 
     const location = useLocation()
 
