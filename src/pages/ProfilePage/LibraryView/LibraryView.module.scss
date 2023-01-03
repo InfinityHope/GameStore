@@ -1,5 +1,8 @@
 .LibraryView {
     @apply pt-12  pb-4 w-5/6;
+    &Cards {
+        @apply grid grid-cols-4 gap-x-2;
+    }
     > h3 {
         @apply text-white font-bold flex justify-center text-4xl;
     }

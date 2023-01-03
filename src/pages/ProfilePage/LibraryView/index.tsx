@@ -48,7 +48,7 @@ const LibraryView = () => {
                                 ))}
                             </Slider>
                         ) : (
-                            <>
+                            <div className={styles.LibraryViewCards}>
                                 {userLibrary.map((product) => (
                                     <Card
                                         type={'LibraryGame'}
@@ -57,7 +57,7 @@ const LibraryView = () => {
                                         key={product.productId}
                                     />
                                 ))}
-                            </>
+                            </div>
                         ))}
                 </div>
             )}
