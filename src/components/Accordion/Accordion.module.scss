@@ -11,7 +11,7 @@
             }
         }
         .Title {
-            @apply w-full flex justify-between items-center pr-[5px] font-bold text-2xl pt-6  transition transition-all;
+            @apply w-full flex justify-between items-center pr-[5px] font-bold text-2xl pt-6  transition transition-all cursor-pointer;
             > span {
                 @apply cursor-pointer;
             }
