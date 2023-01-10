@@ -9,11 +9,9 @@ import { useGetUserOrdersQuery } from '@/redux/api/userAPI/user.api'
 
 const OrdersView = () => {
     const _id: string = useOutletContext()
-    const {
-        data: userOrders,
-        isLoading,
-        refetch,
-    } = useGetUserOrdersQuery(_id, { refetchOnMountOrArgChange: true })
+    const { data: userOrders, isLoading } = useGetUserOrdersQuery(_id, {
+        refetchOnMountOrArgChange: true,
+    })
 
     return (
         <LayoutProfile label={'Заказы'} link={'/profile/orders'} _id={_id}>

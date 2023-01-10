@@ -1,7 +1,7 @@
 import { useGetAllProductsQuery } from '@/reduxApi/productsAPI/products.api'
 import { Breadcrumbs, Card, Dropdown, Spinner } from '@/components'
 import ReactPaginate from 'react-paginate'
-import { ChangeEvent, useState } from 'react'
+import { ChangeEvent, useEffect, useState } from 'react'
 import { Button, Checkbox, Select } from '@/components/UI'
 import { developersData, genresData, publishersData } from '@/data/filters/filtersData'
 import styles from './CatalogPage.module.scss'
@@ -28,6 +28,14 @@ const CatalogPage = () => {
         publishers: publishers.join(','),
         sort: sortType.value,
     })
+
+    useEffect(() => {
+        if (!isLoading) {
+            if (data!.pages <= 1) {
+                setPage(1)
+            }
+        }
+    }, [data, isLoading])
 
     const onChangePage = (page: number) => setPage(page)
 

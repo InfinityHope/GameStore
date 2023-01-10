@@ -82,6 +82,9 @@ const Card: FC<IProps> = ({
                                 title,
                                 price,
                                 img,
+                                availability,
+                                serviceActivation,
+                                regionActivation,
                             })
                         }
                     >
